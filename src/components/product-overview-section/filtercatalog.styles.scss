@@ -1,0 +1,13 @@
+.catalog-container {
+  display: block;
+  margin-top: 30px;
+  background-color: #f2f2f2;
+  padding: 20px 40px;
+
+  .catalog {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+}
