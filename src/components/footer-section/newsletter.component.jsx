@@ -12,6 +12,7 @@ const NewsLetter = () => {
           placeholder="email@example.com"
           className="email-input"
         />
+
         <div className="btn-container">
           <button className="sub-btn">SUBSCRIBE</button>
         </div>

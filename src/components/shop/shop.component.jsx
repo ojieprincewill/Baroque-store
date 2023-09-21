@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import "./shop.styles.scss";
+import Pagination from "./pagination.component";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
@@ -13,21 +14,24 @@ const Shop = () => {
   }, []);
 
   return (
-    <div className="productoverview-container">
-      {products.map((product) => (
-        <div key={product.id} className="product-container">
-          <img
-            src={product.image}
-            alt={product.title}
-            className="product-image"
-          />
-          <div className="text-card">
-            <p className="title">{product.title}</p>
-            <p className="price">${product.price}</p>
+    <>
+      <div className="productoverview-container">
+        {products.map((product) => (
+          <div key={product.id} className="product-container">
+            <img
+              src={product.image}
+              alt={product.title}
+              className="product-image"
+            />
+            <div className="text-card">
+              <p className="title">{product.title}</p>
+              <p className="price">${product.price}</p>
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+      <Pagination />
+    </>
   );
 };
 
