@@ -3,6 +3,7 @@ import "./homepage.styles.scss";
 import HeaderSection from "../../components/header-section/header-section.component";
 import DirectorySection from "../../components/directory-section/directory-section.component";
 import ProductOverviewSection from "../../components/product-overview-section/product-overview-section.component";
+import FooterSection from "../../components/footer-section/footer-section.component";
 
 const HomePage = () => {
   return (
@@ -10,6 +11,7 @@ const HomePage = () => {
       <HeaderSection />
       <DirectorySection />
       <ProductOverviewSection />
+      <FooterSection />
     </div>
   );
 };
