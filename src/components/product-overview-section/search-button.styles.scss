@@ -1,4 +1,5 @@
 .search-btn {
+  position: relative;
   color: #888;
   padding: 10px 25px;
   margin: 0 0 0 10px;
@@ -9,9 +10,49 @@
   background: transparent;
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &.active:hover {
     color: #fff;
     background-color: #7685e6;
     transition: all 0.3s ease;
+
+    .search-icon {
+      color: #fff;
+      transition: all 0.3s ease;
+    }
+
+    &::after {
+      border-top-color: #7685e6;
+      transition: border-top-color 0.3s ease;
+    }
+  }
+
+  &.active {
+    background-color: #f2f2f2;
+
+    .search-icon {
+      margin-right: 8px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid #f2f2f2;
+      bottom: -10px;
+      left: calc(50% - 10px);
+    }
+  }
+
+  .search-icon {
+    margin-right: 8px;
+    font-size: 14px;
+    color: #555;
   }
 }

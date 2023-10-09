@@ -48,16 +48,31 @@ const sections = [
 ];
 
 const Directory = () => {
+  const sectionsGroup1 = sections.slice(0, 2);
+  const sectionsGroup2 = sections.slice(2);
+
   return (
     <div className="directory-menu">
-      {sections.map(({ id, title, subTitle, imageUrl }) => (
-        <MenuItem
-          key={id}
-          title={title}
-          imageUrl={imageUrl}
-          subTitle={subTitle}
-        />
-      ))}
+      <div className="menu-row">
+        {sectionsGroup1.map(({ id, title, subTitle, imageUrl }) => (
+          <MenuItem
+            key={id}
+            title={title}
+            imageUrl={imageUrl}
+            subTitle={subTitle}
+          />
+        ))}
+      </div>
+      <div className="menu-row">
+        {sectionsGroup2.map(({ id, title, subTitle, imageUrl }) => (
+          <MenuItem
+            key={id}
+            title={title}
+            imageUrl={imageUrl}
+            subTitle={subTitle}
+          />
+        ))}
+      </div>
     </div>
   );
 };

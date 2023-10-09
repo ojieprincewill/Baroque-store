@@ -1,11 +1,20 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 import "./searchfield.styles.scss";
 
-const SearchField = () => {
+const SearchField = ({ searchQuery, onSearchChange }) => {
   return (
     <div className="searchfield-container">
-      <input type="text" placeholder="Search" className="searchfield" />
+      <FontAwesomeIcon icon={faMagnifyingGlass} className="searchfield-icon" />
+      <input
+        type="text"
+        placeholder="Search"
+        value={searchQuery}
+        onChange={(e) => onSearchChange(e.target.value)}
+        className="searchfield"
+      />
     </div>
   );
 };

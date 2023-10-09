@@ -1,7 +1,7 @@
 import React from "react";
 
 import "./menu-item.styles.scss";
-import Shoplink from "../shop-link/shop-link.component";
+import ShopLink from "./shop-link.component";
 
 const MenuItem = ({ title, imageUrl, subTitle }) => {
   return (
@@ -15,7 +15,7 @@ const MenuItem = ({ title, imageUrl, subTitle }) => {
         <span className="title">{title.toUpperCase()}</span>
         <span className="subtitle">{subTitle}</span>
       </div>
-      <Shoplink />
+      <ShopLink />
     </div>
   );
 };

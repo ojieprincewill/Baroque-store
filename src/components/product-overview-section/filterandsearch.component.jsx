@@ -1,38 +1,32 @@
-import React, { useState } from "react";
+import React from "react";
 import "./filterandsearch.styles.scss";
 
 import FilterButton from "./filter-button.component";
-import FilterCatalog from "./filtercatalog.component";
 import SearchButton from "./search-button.component";
-import SearchField from "./searchfield.component";
-import TagList from "./taglist.component";
 
-const TagFilterSearchGrid = () => {
-  const [showFilterCatalog, setShowFilterCatalog] = useState(false);
-  const [showSearchField, setShowSearchField] = useState(false);
-
-  const toggleFilterCatalog = () => {
-    setShowFilterCatalog(!showFilterCatalog);
-    setShowSearchField(false);
-  };
-
-  const toggleSearchField = () => {
-    setShowSearchField(!showSearchField);
-    setShowFilterCatalog(false);
+const FilterAndSearch = ({ activeButton, setActiveButton }) => {
+  const handleButtonClick = (buttonName) => {
+    if (activeButton === buttonName) {
+      setActiveButton(null);
+    } else {
+      setActiveButton(null);
+      setActiveButton(buttonName);
+    }
   };
   return (
     <>
-      <div className="grid-container">
-        <TagList />
-        <div className="button-container">
-          <FilterButton onClick={toggleFilterCatalog} />
-          <SearchButton onClick={toggleSearchField} />
-        </div>
+      <div className="button-container">
+        <FilterButton
+          onClick={() => handleButtonClick("filter")}
+          isActive={activeButton === "filter"}
+        />
+        <SearchButton
+          onClick={() => handleButtonClick("search")}
+          isActive={activeButton === "search"}
+        />
       </div>
-      {showFilterCatalog && <FilterCatalog />}
-      {showSearchField && <SearchField />}
     </>
   );
 };
 
-export default TagFilterSearchGrid;
+export default FilterAndSearch;

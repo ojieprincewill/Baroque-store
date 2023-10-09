@@ -1,10 +1,5 @@
-.grid-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-
-  .button-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-  }
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }

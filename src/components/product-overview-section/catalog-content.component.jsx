@@ -1,8 +1,18 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircle } from "@fortawesome/free-solid-svg-icons";
 
 import "./catalog-content.styles.scss";
 
-export const SortByContent = () => {
+const FilterOption = ({ option, onSelect }) => {
+  return (
+    <div className="option" onClick={() => onSelect(option)}>
+      <span className="colortext">{option}</span>
+    </div>
+  );
+};
+
+export const SortByContent = ({ onSortChange }) => {
   const options = [
     "Default",
     "Popularity",
@@ -17,16 +27,14 @@ export const SortByContent = () => {
       <p className="title">Sort by</p>
       <div className="option-container">
         {options.map((option, index) => (
-          <p key={index} className="option">
-            {option}
-          </p>
+          <FilterOption key={index} option={option} onSelect={onSortChange} />
         ))}
       </div>
     </div>
   );
 };
 
-export const PriceContent = () => {
+export const PriceContent = ({ onPriceChange }) => {
   const options = [
     "All",
     "$0.00 - $50.00",
@@ -41,33 +49,41 @@ export const PriceContent = () => {
       <p className="title">Prices</p>
       <div className="option-container">
         {options.map((option, index) => (
-          <p key={index} className="option">
-            {option}
-          </p>
+          <FilterOption key={index} option={option} onSelect={onPriceChange} />
         ))}
       </div>
     </div>
   );
 };
 
-export const ColorContent = () => {
-  const options = ["Black", "Blue", "Gray", "Green", "Red", "White"];
+export const ColorContent = ({ onColorChange }) => {
+  const colorOptions = ["Black", "Blue", "Gray", "Green", "Red", "White"];
 
   return (
     <div className="content">
       <p className="title">Color</p>
       <div className="option-container">
-        {options.map((option, index) => (
-          <p key={index} className="option">
-            {option}
-          </p>
+        {colorOptions.map((color, index) => (
+          <div
+            key={index}
+            className={`option color-${color.toLowerCase()}`}
+            onClick={() => onColorChange(color)}
+          >
+            <span className="color-icon">
+              <FontAwesomeIcon
+                icon={faCircle}
+                style={{ color: color.toLowerCase() }}
+              />
+            </span>
+            <span className="colortext">{color}</span>
+          </div>
         ))}
       </div>
     </div>
   );
 };
 
-export const TagContent = () => {
+export const TagContent = ({ onTagChange }) => {
   const options = ["Fashion", "Lifestyle", "Denim", "Streetstyle", "Crafts"];
 
   return (
@@ -75,7 +91,11 @@ export const TagContent = () => {
       <p className="title">Tags</p>
       <div className="button-container">
         {options.map((option, index) => (
-          <p key={index} className="tag-btn">
+          <p
+            key={index}
+            className="tag-btn"
+            onClick={() => onTagChange(option)}
+          >
             {option}
           </p>
         ))}

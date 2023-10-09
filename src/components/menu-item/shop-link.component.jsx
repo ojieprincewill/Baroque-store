@@ -2,7 +2,7 @@ import React from "react";
 
 import "./shop-link.styles.scss";
 
-const Shoplink = () => {
+const ShopLink = () => {
   return (
     <div className="shoplink-container">
       <p className="shop-link">SHOP NOW</p>
@@ -10,4 +10,4 @@ const Shoplink = () => {
   );
 };
 
-export default Shoplink;
+export default ShopLink;

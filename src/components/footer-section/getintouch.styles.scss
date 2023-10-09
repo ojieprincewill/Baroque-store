@@ -2,7 +2,7 @@
   font-size: 16px;
   font-weight: bold;
   color: #e6e6e6;
-  margin: 30px 0 16px 0;
+  margin: 30px 0;
 }
 
 .infotext-container {
@@ -13,9 +13,28 @@
 
   .info-text {
     font-size: 14px;
-    color: #888;
+    color: #999;
     text-align: justify;
     line-height: 1.6;
     margin: 0 0 14px 0;
+  }
+}
+
+.icon-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin: 20px 0 0 0;
+
+  .intouch-icon {
+    margin: 0 25px 0 0;
+    font-size: 18px;
+    color: #999;
+    cursor: pointer;
+
+    &:hover {
+      color: #7685e6;
+      transition: all 0.3s ease;
+    }
   }
 }

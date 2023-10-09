@@ -1,6 +1,13 @@
 .directory-menu {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   flex-wrap: wrap;
   width: 100%;
+
+  .menu-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
 }

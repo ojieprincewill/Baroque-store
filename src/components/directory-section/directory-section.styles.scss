@@ -1,12 +1,5 @@
-*,
-:after,
-:before {
-  box-sizing: border-box;
-}
-
 .directory-section {
   display: flex;
-  flex-direction: column;
   align-items: center;
   padding: 40px;
 }

@@ -9,30 +9,49 @@
   background: transparent;
   cursor: pointer;
 
-  // &::after {
-  //   content: "";
-  //   position: absolute;
-  //   display: block;
-  //   width: 14px;
-  //   height: 14px;
-  //   background-color: transparent;
-  //   border-left: 1px solid #e7e7e7;
-  //   border-bottom: 1px solid #e7e7e7;
-  //   transform-origin: center center;
-  //   transform: rotate(-45deg);
-  //   left: calc(50% - 7px);
-  //   bottom: -8px;
-  //   transition: all 0.4s;
-  //   opacity: 1;
-  // }
-
-  &:hover {
+  &:hover,
+  &.active:hover {
     color: #fff;
     background-color: #7685e6;
     transition: all 0.3s ease;
+
+    .filter-icon {
+      color: #fff;
+      transition: all 0.3s ease;
+    }
+
+    &::after {
+      border-top-color: #7685e6;
+      transition: border-top-color 0.3s ease;
+    }
   }
 
-  // &.active::after {
-  //   opacity: 0;
-  // }
+  &.active {
+    background-color: #f2f2f2;
+
+    .filter-icon {
+      margin-right: 8px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid #f2f2f2;
+      bottom: -10px;
+      left: calc(50% - 10px);
+    }
+  }
+
+  .filter-icon {
+    margin-right: 8px;
+    font-size: 14px;
+    color: #555;
+  }
 }

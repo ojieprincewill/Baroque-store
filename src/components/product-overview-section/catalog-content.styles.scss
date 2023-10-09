@@ -9,6 +9,10 @@
     margin: 0 0 16px 0;
   }
 
+  .option {
+    margin: 0 0 8px 0;
+  }
+
   .option-container {
     display: flex;
     padding: 0;
@@ -16,25 +20,52 @@
     flex-direction: column;
     justify-content: flex-start;
 
-    .option {
+    .colortext {
       color: #888;
-      margin: 0 0 10px 0;
       border-bottom: 1px solid transparent;
       transition: all 0.3s ease;
       cursor: pointer;
 
-      &:hover {
-        color: #7685e6;
-        border-color: #7685e6;
-      }
-
       &.active,
-      &:active {
+      &:hover {
         color: #7685e6;
         border-color: #7685e6;
       }
     }
   }
+
+  .color-icon {
+    content: "\f111";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 12px;
+    margin-right: 8px;
+  }
+
+  .color-black {
+    color: black;
+  }
+
+  .color-blue {
+    color: blue;
+  }
+
+  .color-gray {
+    color: gray;
+  }
+
+  .color-green {
+    color: green;
+  }
+
+  .color-red {
+    color: red;
+  }
+
+  .color-white {
+    color: white;
+  }
+
   .button-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
