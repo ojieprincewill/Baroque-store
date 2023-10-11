@@ -7,7 +7,7 @@ import FilterCatalog from "./filtercatalog.component";
 import SearchField from "./searchfield.component";
 import ProductList from "./product-list.component";
 
-const ProductOverviewSection = () => {
+const ProductOverviewSection = ({ className }) => {
   const [activeCategory, setActiveCategory] = useState("All Products");
   const [activeButton, setActiveButton] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
@@ -46,7 +46,7 @@ const ProductOverviewSection = () => {
   };
 
   return (
-    <div className="section-container">
+    <div className={className}>
       <h1 className="section-header">PRODUCT OVERVIEW</h1>
       <div className="grid-container">
         <TagList

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import "./menu-item.styles.scss";
 import ShopLink from "./shop-link.component";
@@ -15,7 +16,9 @@ const MenuItem = ({ title, imageUrl, subTitle }) => {
         <span className="title">{title.toUpperCase()}</span>
         <span className="subtitle">{subTitle}</span>
       </div>
-      <ShopLink />
+      <Link to="/shop">
+        <ShopLink />
+      </Link>
     </div>
   );
 };

@@ -1,32 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { auth } from "../../firebase/firebase.utils";
+import { Link } from "react-router-dom";
 
 import "./navigation.styles.scss";
-import CartIcon from "./cart-icon.component";
 
-const Navigation = () => {
-  const [scrolling, setScrolling] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setScrolling(true);
-      } else {
-        setScrolling(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
+const Navigation = ({ className, currentUser }) => {
   return (
     <>
-      <div className={`navigation ${scrolling ? "scrolled" : ""}`}>
+      <div className={`${className}`}>
         <div className="logo-container">
           <p className="logo">BAROQUE</p>
         </div>
@@ -37,9 +21,23 @@ const Navigation = () => {
           <p className="pagelink">Blog</p>
           <p className="pagelink">About</p>
           <p className="pagelink">Contact</p>
+          {currentUser ? (
+            <div className="pagelink" onClick={() => auth.signOut()}>
+              Sign Out
+            </div>
+          ) : (
+            <Link className="pagelink" to="/signin">
+              Sign In
+            </Link>
+          )}
         </div>
         <div className="icons-container">
-          <CartIcon />
+          <div className="cartcontainer">
+            <div className="carticon">
+              <FontAwesomeIcon icon={faCartShopping} />
+              <div className="cart-badge">0</div>
+            </div>
+          </div>
           <div className="sidebar-container">
             <FontAwesomeIcon icon={faBars} className="baricon" />
           </div>

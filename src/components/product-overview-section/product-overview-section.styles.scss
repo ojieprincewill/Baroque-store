@@ -1,4 +1,4 @@
-.section-container {
+.homesection-container {
   padding: 10px 40px;
   margin: 20px 0;
 
@@ -7,6 +7,21 @@
     font-weight: bold;
     padding: 0;
     margin: 0 0 5px 0;
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.othersection-container {
+  padding: 10px 40px;
+  margin: 20px 0;
+
+  .section-header {
+    display: none;
+    visibility: hidden;
   }
 
   .grid-container {

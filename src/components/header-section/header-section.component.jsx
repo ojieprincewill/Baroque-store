@@ -1,16 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navigation from "../navigation/navigation.component";
 import Header from "../header/header.component";
 
 import "./header-section.styles.scss";
 
-const HeaderSection = () => {
-    return (
-        <div className="container">
-            <Navigation/>
-            <Header/>
-        </div>
-    )
+const HeaderSection = ({ currentUser }) => {
+  const [scrolling, setScrolling] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setScrolling(true);
+      } else {
+        setScrolling(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  return (
+    <div className="container">
+      <Navigation
+        currentUser={currentUser}
+        className={`homepage-navigation ${scrolling ? "scrolled" : ""}`}
+      />
+      <Header />
+    </div>
+  );
 };
 
 export default HeaderSection;
