@@ -1,4 +1,4 @@
-export const sections = [
+export const SECTIONS_DATA = [
   {
     title: "men",
     subTitle: "Season 2023",

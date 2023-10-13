@@ -16,7 +16,7 @@ const ProductList = ({ products, activeCategory }) => {
     <>
       <div className="product-list">
         {mainProducts.map((product) => (
-          <Product product={product} />
+          <Product key={product.id} product={product} />
         ))}
       </div>
       <Pagination />

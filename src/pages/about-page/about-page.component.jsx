@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-
-import "./sign-in-and-sign-out.styles.scss";
 import Navigation from "../../components/navigation/navigation.component";
-import SignIn from "../../components/sign-in/sign-in.component";
-import SignUp from "../../components/sign-up/sign-up.component";
+import About from "../../components/about/about.component";
+import FooterSection from "../../components/footer-section/footer-section.component";
 
-const SignInAndSignUp = ({ currentUser }) => {
+const AboutPage = ({ currentUser }) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -29,12 +27,10 @@ const SignInAndSignUp = ({ currentUser }) => {
         currentUser={currentUser}
         className={`otherpages-navigation ${isScrolled ? "scrolled" : ""}`}
       />
-      <div className="sign-in-and-sign-up">
-        <SignIn />
-        <SignUp />
-      </div>
+      <About />
+      <FooterSection />
     </>
   );
 };
 
-export default SignInAndSignUp;
+export default AboutPage;

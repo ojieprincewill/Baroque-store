@@ -3,26 +3,43 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { auth } from "../../firebase/firebase.utils";
+import { signOut } from "firebase/auth";
 import { Link } from "react-router-dom";
 
 import "./navigation.styles.scss";
 
 const Navigation = ({ className, currentUser }) => {
+  const handleSignOut = async () => {
+    try {
+      signOut(auth);
+    } catch (error) {
+      console.error("Error signing out:", error.message);
+    }
+  };
+
   return (
     <>
       <div className={`${className}`}>
         <div className="logo-container">
-          <p className="logo">BAROQUE</p>
+          <Link to="/" className="logo">
+            BAROQUE
+          </Link>
         </div>
         <div className="pagelink-container">
-          <p className="pagelink">Home</p>
-          <p className="pagelink">Shop</p>
-          <p className="pagelink">Features</p>
-          <p className="pagelink">Blog</p>
-          <p className="pagelink">About</p>
-          <p className="pagelink">Contact</p>
+          <Link to="/" className="pagelink">
+            Home
+          </Link>
+          <Link to="/shop" className="pagelink">
+            Shop
+          </Link>
+          <Link className="pagelink">Features</Link>
+          <Link className="pagelink">Blog</Link>
+          <Link to="/about" className="pagelink">
+            About
+          </Link>
+          <Link className="pagelink">Contact</Link>
           {currentUser ? (
-            <div className="pagelink" onClick={() => auth.signOut()}>
+            <div className="pagelink" onClick={handleSignOut}>
               Sign Out
             </div>
           ) : (

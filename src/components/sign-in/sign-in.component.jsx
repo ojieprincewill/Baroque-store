@@ -4,32 +4,44 @@ import "./sign-in.styles.scss";
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 import { auth, provider } from "../../firebase/firebase.utils";
-import { signInWithPopup } from "firebase/auth";
+import { signInWithPopup, signInWithEmailAndPassword } from "firebase/auth";
 
 const SignIn = () => {
-  const [details, setDetails] = useState({
+  const [signedIn, setSignedIn] = useState({
     email: "",
     password: "",
   });
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    setDetails({ email: "", password: "" });
+    const { email, password } = signedIn;
+
+    try {
+      signInWithEmailAndPassword(auth, email, password);
+      setSignedIn({ email: "", password: "" });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleChange = (event) => {
     const { value, name } = event.target;
 
-    setDetails((prevDetails) => ({
+    setSignedIn((prevDetails) => ({
       ...prevDetails,
       [name]: value,
     }));
   };
 
-  const handleClick = () => {
-    signInWithPopup(auth, provider);
+  const handleClick = async () => {
+    try {
+      signInWithPopup(auth, provider);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
+  const { email, password } = signedIn;
   return (
     <div className="sign-in-container">
       <h2 className="title">I already have an account</h2>
@@ -40,16 +52,16 @@ const SignIn = () => {
           name="email"
           type="email"
           handleChange={handleChange}
-          value={details.email}
-          label="email"
+          value={email}
+          label="Email"
           required
         />
         <FormInput
           name="password"
           type="password"
           handleChange={handleChange}
-          value={details.password}
-          label="password"
+          value={password}
+          label="Password"
           required
         />
         <div className="btn-flex">
