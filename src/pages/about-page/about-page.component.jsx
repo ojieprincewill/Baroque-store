@@ -24,7 +24,6 @@ const AboutPage = ({ currentUser }) => {
   return (
     <>
       <Navigation
-        currentUser={currentUser}
         className={`otherpages-navigation ${isScrolled ? "scrolled" : ""}`}
       />
       <About />

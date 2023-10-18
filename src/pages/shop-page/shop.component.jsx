@@ -24,7 +24,6 @@ const Shop = ({ currentUser }) => {
   return (
     <>
       <Navigation
-        currentUser={currentUser}
         className={`otherpages-navigation ${isScrolled ? "scrolled" : ""}`}
       />
       <ProductOverviewSection className="othersection-container" />

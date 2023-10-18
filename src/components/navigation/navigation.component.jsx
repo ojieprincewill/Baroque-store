@@ -1,16 +1,18 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { auth } from "../../firebase/firebase.utils";
 import { signOut } from "firebase/auth";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import "./navigation.styles.scss";
+import CartIcon from "../cart-icon/cart-icon.component";
+import CartSideBar from "../cart-sidebar/cart-sidebar.component";
 
 const Navigation = ({ className }) => {
   const currentUser = useSelector((state) => state.user.currentUser);
+  const isCartModalOpen = useSelector((state) => state.cartModal);
 
   const handleSignOut = async () => {
     try {
@@ -53,10 +55,7 @@ const Navigation = ({ className }) => {
         </div>
         <div className="icons-container">
           <div className="cartcontainer">
-            <div className="carticon">
-              <FontAwesomeIcon icon={faCartShopping} />
-              <div className="cart-badge">0</div>
-            </div>
+            <CartIcon />
           </div>
           <div className="sidebar-container">
             <FontAwesomeIcon icon={faBars} className="baricon" />
@@ -64,6 +63,7 @@ const Navigation = ({ className }) => {
         </div>
       </div>
       <div className="nav-placeholder"></div>
+      {isCartModalOpen && <CartSideBar />}
     </>
   );
 };

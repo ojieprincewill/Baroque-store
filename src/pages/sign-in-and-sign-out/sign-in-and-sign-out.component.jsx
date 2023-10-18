@@ -26,7 +26,6 @@ const SignInAndSignUp = ({ currentUser }) => {
   return (
     <>
       <Navigation
-        currentUser={currentUser}
         className={`otherpages-navigation ${isScrolled ? "scrolled" : ""}`}
       />
       <div className="sign-in-and-sign-up">
