@@ -4,7 +4,7 @@ import Header from "../header/header.component";
 
 import "./header-section.styles.scss";
 
-const HeaderSection = ({ currentUser }) => {
+const HeaderSection = () => {
   const [scrolling, setScrolling] = useState(false);
 
   useEffect(() => {
@@ -25,7 +25,6 @@ const HeaderSection = ({ currentUser }) => {
   return (
     <div className="container">
       <Navigation
-        currentUser={currentUser}
         className={`homepage-navigation ${scrolling ? "scrolled" : ""}`}
       />
       <Header />

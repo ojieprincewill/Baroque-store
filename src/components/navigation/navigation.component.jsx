@@ -5,10 +5,13 @@ import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { auth } from "../../firebase/firebase.utils";
 import { signOut } from "firebase/auth";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import "./navigation.styles.scss";
 
-const Navigation = ({ className, currentUser }) => {
+const Navigation = ({ className }) => {
+  const currentUser = useSelector((state) => state.user.currentUser);
+
   const handleSignOut = async () => {
     try {
       signOut(auth);

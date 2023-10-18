@@ -4,10 +4,10 @@ import DirectorySection from "../../components/directory-section/directory-secti
 import ProductOverviewSection from "../../components/product-overview-section/product-overview-section.component";
 import FooterSection from "../../components/footer-section/footer-section.component";
 
-const Home = ({ currentUser }) => {
+const Home = () => {
   return (
     <div>
-      <HeaderSection currentUser={currentUser} />
+      <HeaderSection />
       <DirectorySection />
       <ProductOverviewSection className="homesection-container" />
       <FooterSection />
