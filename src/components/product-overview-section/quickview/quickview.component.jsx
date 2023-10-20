@@ -38,7 +38,7 @@ const Quickview = ({ product, onClose }) => {
             <p className="modal-text">{product.description}</p>
             <SizeAndColor />
             <QuantityControl />
-            <CartButton />
+            <CartButton product={product} />
             <div className="icon-cont">
               <div className="tooltip">
                 <FontAwesomeIcon icon={fasHeart} className="wl-icon" />

@@ -8,11 +8,11 @@ import { useSelector } from "react-redux";
 
 import "./navigation.styles.scss";
 import CartIcon from "../cart-icon/cart-icon.component";
-import CartSideBar from "../cart-sidebar/cart-sidebar.component";
+import CartModal from "../cart-modal/cart-modal.component";
 
 const Navigation = ({ className }) => {
   const currentUser = useSelector((state) => state.user.currentUser);
-  const isCartModalOpen = useSelector((state) => state.cartModal);
+  const isCartModalOpen = useSelector((state) => state.cart);
 
   const handleSignOut = async () => {
     try {
@@ -63,7 +63,7 @@ const Navigation = ({ className }) => {
         </div>
       </div>
       <div className="nav-placeholder"></div>
-      {isCartModalOpen && <CartSideBar />}
+      {isCartModalOpen ? null : <CartModal />}
     </>
   );
 };

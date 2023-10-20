@@ -1,15 +1,14 @@
 import React from "react";
 
-import "./cart-sidebar.styles.scss";
+import "./cart-modal.styles.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
-import { toggleCartModal } from "../../features/cart-modal/cartModalSlice";
-
+import { toggleCartDisplay } from "../../features/cart/cartSlice";
 const CartModal = () => {
   const dispatch = useDispatch();
   const handleCartClose = () => {
-    dispatch(toggleCartModal());
+    dispatch(toggleCartDisplay());
   };
   return (
     <div className="cart-sidebar-modal">

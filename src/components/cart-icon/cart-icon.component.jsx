@@ -2,14 +2,14 @@ import React from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import { toggleCartModal } from "../../features/cart-modal/cartModalSlice";
+import { toggleCartDisplay } from "../../features/cart/cartSlice";
 import { useDispatch } from "react-redux";
 
 const CartIcon = () => {
   const dispatch = useDispatch();
 
   const handleCartIconClick = () => {
-    dispatch(toggleCartModal());
+    dispatch(toggleCartDisplay());
   };
 
   return (
