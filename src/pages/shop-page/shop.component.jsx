@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navigation from "../../components/navigation/navigation.component";
-import ProductOverviewSection from "../../components/product-overview-section/product-overview-section.component";
 import FooterSection from "../../components/footer-section/footer-section.component";
+import ProductOverview from "../../components/product-overview-section/product-overview.component";
 
 const Shop = ({ currentUser }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -26,7 +26,7 @@ const Shop = ({ currentUser }) => {
       <Navigation
         className={`otherpages-navigation ${isScrolled ? "scrolled" : ""}`}
       />
-      <ProductOverviewSection className="othersection-container" />
+      <ProductOverview className="othersection-container" />
       <FooterSection />
     </>
   );

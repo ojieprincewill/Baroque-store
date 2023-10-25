@@ -10,7 +10,7 @@ const SearchField = ({ searchQuery, onSearchChange }) => {
       <FontAwesomeIcon icon={faMagnifyingGlass} className="searchfield-icon" />
       <input
         type="text"
-        placeholder="Search"
+        placeholder="Search products"
         value={searchQuery}
         onChange={(e) => onSearchChange(e.target.value)}
         className="searchfield"

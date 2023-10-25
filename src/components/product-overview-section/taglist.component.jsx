@@ -2,29 +2,27 @@ import React from "react";
 
 import "./taglist.styles.scss";
 
-const TagList = ({ activeCategory, setActiveCategory }) => {
-  const handleTagClick = (tag) => {
-    setActiveCategory(tag);
-  };
+const categories = [
+  "all Products",
+  "men's clothing",
+  "women's clothing",
+  "jewelery",
+];
 
-  const tags = [
-    "all Products",
-    "men's clothing",
-    "women's clothing",
-    "jewelery",
-  ];
-
+const TagList = ({ selectedCategory, setSelectedCategory }) => {
   return (
     <div className="tags-container">
-      {tags.map((tag, index) => (
+      {categories.map((category) => (
         <p
-          key={index}
+          key={category}
           className={`section-tag ${
-            activeCategory.toLowerCase() === tag.toLowerCase() ? "active" : ""
+            selectedCategory.toLowerCase() === category.toLowerCase()
+              ? "active"
+              : ""
           }`}
-          onClick={() => handleTagClick(tag)}
+          onClick={() => setSelectedCategory(category)}
         >
-          {tag.charAt(0).toUpperCase() + tag.slice(1)}
+          {category.charAt(0).toUpperCase() + category.slice(1)}
         </p>
       ))}
     </div>

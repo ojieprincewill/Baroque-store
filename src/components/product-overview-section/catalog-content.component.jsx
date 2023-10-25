@@ -4,16 +4,8 @@ import { faCircle } from "@fortawesome/free-solid-svg-icons";
 
 import "./catalog-content.styles.scss";
 
-const FilterOption = ({ option, onSelect }) => {
-  return (
-    <div className="option" onClick={() => onSelect(option)}>
-      <span className="colortext">{option}</span>
-    </div>
-  );
-};
-
-export const SortByContent = ({ onSortChange }) => {
-  const options = [
+export const SortBy = ({ handleFilterChange }) => {
+  const sortOptions = [
     "Default",
     "Popularity",
     "Average rating",
@@ -26,16 +18,22 @@ export const SortByContent = ({ onSortChange }) => {
     <div className="content">
       <p className="title">Sort by</p>
       <div className="option-container">
-        {options.map((option, index) => (
-          <FilterOption key={index} option={option} onSelect={onSortChange} />
+        {sortOptions.map((option) => (
+          <div
+            key={option}
+            className="option"
+            onClick={() => handleFilterChange("sortBy", option)}
+          >
+            <span className="colortext">{option}</span>
+          </div>
         ))}
       </div>
     </div>
   );
 };
 
-export const PriceContent = ({ onPriceChange }) => {
-  const options = [
+export const PriceRange = ({ handleFilterChange }) => {
+  const priceOptions = [
     "All",
     "$0.00 - $50.00",
     "$50.00 - $100.00",
@@ -46,36 +44,15 @@ export const PriceContent = ({ onPriceChange }) => {
 
   return (
     <div className="content">
-      <p className="title">Prices</p>
+      <p className="title">Price range</p>
       <div className="option-container">
-        {options.map((option, index) => (
-          <FilterOption key={index} option={option} onSelect={onPriceChange} />
-        ))}
-      </div>
-    </div>
-  );
-};
-
-export const ColorContent = ({ onColorChange }) => {
-  const colorOptions = ["Black", "Blue", "Gray", "Green", "Red", "White"];
-
-  return (
-    <div className="content">
-      <p className="title">Color</p>
-      <div className="option-container">
-        {colorOptions.map((color, index) => (
+        {priceOptions.map((option) => (
           <div
-            key={index}
-            className={`option color-${color.toLowerCase()}`}
-            onClick={() => onColorChange(color)}
+            key={option}
+            className="option"
+            onClick={() => handleFilterChange("priceRange", option)}
           >
-            <span className="color-icon">
-              <FontAwesomeIcon
-                icon={faCircle}
-                style={{ color: color.toLowerCase() }}
-              />
-            </span>
-            <span className="colortext">{color}</span>
+            <span className="colortext">{option}</span>
           </div>
         ))}
       </div>
@@ -83,19 +60,45 @@ export const ColorContent = ({ onColorChange }) => {
   );
 };
 
-export const TagContent = ({ onTagChange }) => {
-  const options = ["Fashion", "Lifestyle", "Denim", "Streetstyle", "Crafts"];
+export const ColorFilters = () => {
+  const colorOptions = ["Black", "Blue", "Gray", "Green", "Red", "White"];
+
+  return (
+    <div className="content">
+      <p className="title">Color</p>
+      <div className="option-container">
+        {colorOptions.map((option) => (
+          <div key={option} className={`option color-${option.toLowerCase()}`}>
+            <span className="color-icon">
+              <FontAwesomeIcon
+                icon={faCircle}
+                style={{ color: option.toLowerCase() }}
+              />
+            </span>
+            <span className="colortext">{option}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export const TagFilters = () => {
+  const tagOptions = [
+    "All",
+    "Fashion",
+    "Lifestyle",
+    "Denim",
+    "Streetstyle",
+    "Crafts",
+  ];
 
   return (
     <div className="content">
       <p className="title">Tags</p>
       <div className="button-container">
-        {options.map((option, index) => (
-          <p
-            key={index}
-            className="tag-btn"
-            onClick={() => onTagChange(option)}
-          >
+        {tagOptions.map((option) => (
+          <p key={option} className="tag-btn">
             {option}
           </p>
         ))}

@@ -3,13 +3,19 @@ import React from "react";
 import "./cart-modal.styles.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleCartDisplay } from "../../features/cart/cartSlice";
+import CartItem from "../cart-item/cart-item.component";
+
 const CartModal = () => {
+  const cartItems = useSelector((state) => state.cart.cartItems);
+
   const dispatch = useDispatch();
+
   const handleCartClose = () => {
     dispatch(toggleCartDisplay());
   };
+
   return (
     <div className="cart-sidebar-modal">
       <div className="cart-sidebar-content">
@@ -23,7 +29,11 @@ const CartModal = () => {
             />
           </div>
         </div>
-        <div className="cart-items" />
+        <div className="cart-items">
+          {cartItems.map((cartItem) => (
+            <CartItem key={cartItem.id} product={cartItem} />
+          ))}
+        </div>
         <div className="footer-flex">
           <button className="sidebar-button">VIEW CART</button>
           <button className="sidebar-button">CHECKOUT</button>
