@@ -30,9 +30,13 @@ const CartModal = () => {
           </div>
         </div>
         <div className="cart-items">
-          {cartItems.map((cartItem) => (
-            <CartItem key={cartItem.id} product={cartItem} />
-          ))}
+          {cartItems && Array.isArray(cartItems) && cartItems.length > 0 && (
+            <div className="cart-items">
+              {cartItems.map((cartItem) => (
+                <CartItem key={cartItem.id} products={cartItem} />
+              ))}
+            </div>
+          )}
         </div>
         <div className="footer-flex">
           <button className="sidebar-button">VIEW CART</button>

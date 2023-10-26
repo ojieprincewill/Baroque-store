@@ -12,7 +12,7 @@ import CartModal from "../cart-modal/cart-modal.component";
 
 const Navigation = ({ className }) => {
   const currentUser = useSelector((state) => state.user.currentUser);
-  const isCartModalOpen = useSelector((state) => state.cart);
+  const isCartModalOpen = useSelector((state) => state.cart.hidden);
 
   const handleSignOut = async () => {
     try {

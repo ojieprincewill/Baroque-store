@@ -7,6 +7,7 @@ import Quickview from "./quickview/quickview.component";
 import WishlistModal from "./wishlist-modal/wishlist-modal.component";
 
 const Product = ({ product }) => {
+  const { image, title, price } = product;
   const [isQuickOpen, setIsQuickOpen] = useState(false);
   const [isWishOpen, setIsWishOpen] = useState(false);
   const [isItemAdded, setIsItemAdded] = useState(false);
@@ -29,21 +30,17 @@ const Product = ({ product }) => {
   };
 
   return (
-    <div key={product.id} className="product-container">
+    <div className="product-container">
       <div className="image-container">
-        <img
-          src={product.image}
-          alt={product.title}
-          className="product-image"
-        />
+        <img src={image} alt={title} className="product-image" />
         <button onClick={openQuickView} className="quick-view-button">
           Quick View
         </button>
       </div>
       <div className="card">
         <div className="text-cont">
-          <p className="title">{product.title}</p>
-          <p className="price">${product.price}</p>
+          <p className="title">{title}</p>
+          <p className="price">${price}</p>
         </div>
         <div
           className={`wishlist-icon ${isItemAdded ? "active" : ""}`}

@@ -10,7 +10,9 @@ export const CartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    toggleCartDisplay: (state) => !state,
+    toggleCartDisplay: (state) => {
+      state.hidden = !state.hidden;
+    },
     addItem: (state, action) => {
       state.cartItems = addItemToCart(state.cartItems, action.payload);
     },

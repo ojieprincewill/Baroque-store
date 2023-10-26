@@ -6,9 +6,12 @@ import TagList from "./taglist.component";
 import FilterCatalog from "./filtercatalog.component";
 import SearchField from "./searchfield.component";
 import ProductList from "./product-list.component";
+import { useDispatch, useSelector } from "react-redux";
+import { setProducts } from "../../features/products/productsSlice";
 
 const ProductOverview = ({ className }) => {
-  const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.products);
   const [selectedCategory, setSelectedCategory] = useState("all Products");
   const [activeButton, setActiveButton] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
@@ -47,12 +50,10 @@ const ProductOverview = ({ className }) => {
 
         const data = await response.json();
         if (isMounted) {
-          console.log("API Response:", data);
           const filteredProducts = data.filter(
             (product) => product.category !== "electronics"
           );
-          console.log("Filtered Products:", filteredProducts);
-          setProducts(filteredProducts);
+          dispatch(setProducts(filteredProducts));
           setLoading(false);
         }
       } catch (error) {
@@ -68,7 +69,7 @@ const ProductOverview = ({ className }) => {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     let filteredProducts = products;
@@ -86,20 +87,6 @@ const ProductOverview = ({ className }) => {
       );
     }
 
-    switch (filters.sortBy) {
-      case "Default":
-        filteredProducts.sort((a, b) => a.id - b.id);
-        break;
-      case "Price: Low to High":
-        filteredProducts.sort((a, b) => a.price - b.price);
-        break;
-      case "Price: High to Low":
-        filteredProducts.sort((a, b) => b.price - a.price);
-        break;
-      default:
-        break;
-    }
-
     if (filters.priceRange !== "All") {
       const { minPrice, maxPrice } = parsePriceRange(filters.priceRange);
       filteredProducts = filteredProducts.filter((product) => {
@@ -110,7 +97,23 @@ const ProductOverview = ({ className }) => {
       });
     }
 
-    setFilteredProducts(filteredProducts);
+    let sortedProducts = [...filteredProducts];
+
+    switch (filters.sortBy) {
+      case "Default":
+        sortedProducts.sort((a, b) => a.id - b.id);
+        break;
+      case "Price: Low to High":
+        sortedProducts.sort((a, b) => a.price - b.price);
+        break;
+      case "Price: High to Low":
+        sortedProducts.sort((a, b) => b.price - a.price);
+        break;
+      default:
+        break;
+    }
+
+    setFilteredProducts(sortedProducts);
   }, [products, selectedCategory, searchQuery, filters]);
 
   const handleSetSelectedCategory = (category) => {
