@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import "./cart-modal.styles.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,8 +12,14 @@ const CartModal = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleCartClose = () => {
+    dispatch(toggleCartDisplay());
+  };
+
+  const handleCheckoutClick = () => {
+    navigate("/checkout");
     dispatch(toggleCartDisplay());
   };
 
@@ -30,17 +37,21 @@ const CartModal = () => {
           </div>
         </div>
         <div className="cart-items">
-          {cartItems && Array.isArray(cartItems) && cartItems.length > 0 && (
+          {cartItems.length ? (
             <div className="cart-items">
               {cartItems.map((cartItem) => (
                 <CartItem key={cartItem.id} products={cartItem} />
               ))}
             </div>
+          ) : (
+            <span className="empty-message">Your cart is empty</span>
           )}
         </div>
         <div className="footer-flex">
           <button className="sidebar-button">VIEW CART</button>
-          <button className="sidebar-button">CHECKOUT</button>
+          <button className="sidebar-button" onClick={handleCheckoutClick}>
+            CHECKOUT
+          </button>
         </div>
       </div>
     </div>

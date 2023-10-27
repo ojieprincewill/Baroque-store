@@ -3,7 +3,7 @@ import Navigation from "../../components/navigation/navigation.component";
 import FooterSection from "../../components/footer-section/footer-section.component";
 import ProductOverview from "../../components/product-overview-section/product-overview.component";
 
-const Shop = ({ currentUser }) => {
+const Shop = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {

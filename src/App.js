@@ -1,14 +1,19 @@
 import { Routes, Route, Navigate } from "react-router-dom";
+import { useEffect } from "react";
 
 import "./App.css";
+
 import Home from "./pages/home-page/home.component";
 import Shop from "./pages/shop-page/shop.component";
 import AboutPage from "./pages/about-page/about-page.component";
 import SignInAndSignUp from "./pages/sign-in-and-sign-out/sign-in-and-sign-out.component";
+import CheckOutPage from "./pages/checkout-page/checkout-page.component";
+
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
-import { useEffect } from "react";
+
 import { onSnapshot } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
+
 import { setCurrentUser } from "./features/user/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -45,6 +50,7 @@ function App() {
           path="/signin"
           element={currentUser ? <Navigate to="/" /> : <SignInAndSignUp />}
         />
+        <Route path="/checkout" element={<CheckOutPage />} />
       </Routes>
     </>
   );
