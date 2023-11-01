@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  color: #e6e6e6;
+  color: #fff;
 
   .small {
     font-size: 30px;
@@ -27,12 +27,12 @@
       margin: 30px 0;
       border: none;
       border-radius: 50px;
-      color: #e6e6e6;
+      color: #fff;
       transition: all 0.2s ease;
     }
 
     :hover {
-      background-color: #e6e6e6;
+      background-color: #fff;
       color: #7685e6;
       cursor: pointer;
     }

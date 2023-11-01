@@ -1,0 +1,158 @@
+.contact-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("https://preview.colorlib.com/theme/cozastore/images/bg-01.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 200px;
+
+  .headertext {
+    color: #fff;
+    font-size: 50px;
+    margin: none;
+    padding: 10px;
+  }
+}
+
+.contactgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid #e1e1e1;
+  width: 90%;
+  margin: 110px auto;
+
+  .contactform {
+    padding: 50px;
+    border-right: 1px solid #e1e1e1;
+
+    .formtitle {
+      font-size: 20px;
+      text-transform: capitalize;
+      text-align: center;
+      font-weight: 500;
+      color: #333;
+      margin: 0 0 50px 0;
+    }
+
+    .forminputcontainer {
+      position: relative;
+      margin: 0 0 30px 0;
+
+      .envelope {
+        position: absolute;
+        left: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 18px;
+        margin: 0 10px;
+        color: #888;
+      }
+
+      .input {
+        width: 100%;
+        font-size: 16px;
+        height: auto;
+        padding: 20px;
+        text-indent: 10px;
+        padding-left: 40px;
+        border: 1px solid #e1e1e1;
+        border-radius: 2px;
+
+        &::placeholder {
+          font-size: 15px;
+          color: #444;
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    .textareacontainer {
+      margin: 0 0 30px 0;
+
+      .contacttextarea {
+        width: 100%;
+        font-size: 16px;
+        font-family: inherit;
+        min-height: 150px;
+        padding: 20px;
+        border: 1px solid #e1e1e1;
+        border-radius: 2px;
+
+        &::placeholder {
+          font-size: 15px;
+          color: #444;
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    .submitbtn {
+      width: 100%;
+      background-color: #333;
+      font-size: 15px;
+      font-weight: 530;
+      text-align: center;
+      text-transform: uppercase;
+      padding: 13px 30px;
+      border: none;
+      border-radius: 50px;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: #7685e6;
+        color: #fff;
+      }
+    }
+  }
+
+  .contactcontainer {
+    padding: 50px 50px 50px 100px;
+    border-left: 1px solid #e1e1e1;
+
+    .contactflex {
+      display: flex;
+      align-items: flex-start;
+      margin: 20px 0;
+
+      .addressicon {
+        font-size: 20px;
+        color: #888;
+      }
+
+      .textcont {
+        margin: 0 0 20px 30px;
+
+        .heading {
+          font-size: 18px;
+          color: #444;
+          margin: 0 0 20px 0;
+        }
+
+        .subtext {
+          font-size: 16px;
+          line-height: 1.5;
+          text-align: justify;
+          color: #888;
+          margin: 0 0 16px 0;
+        }
+
+        .subtext2 {
+          font-size: 16px;
+          color: #488dd3;
+          margin: 0 0 10px 0;
+        }
+      }
+    }
+  }
+}

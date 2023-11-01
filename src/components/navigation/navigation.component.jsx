@@ -37,12 +37,18 @@ const Navigation = ({ className }) => {
           <Link to="/shop" className="pagelink">
             Shop
           </Link>
-          <Link className="pagelink">Features</Link>
-          <Link className="pagelink">Blog</Link>
+          <Link to="/checkout" className="pagelink">
+            Features
+          </Link>
+          <Link to="/blog" className="pagelink">
+            Blog
+          </Link>
           <Link to="/about" className="pagelink">
             About
           </Link>
-          <Link className="pagelink">Contact</Link>
+          <Link to="/contact" className="pagelink">
+            Contact
+          </Link>
           {currentUser ? (
             <div className="pagelink" onClick={handleSignOut}>
               Sign Out

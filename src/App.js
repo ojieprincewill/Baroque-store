@@ -16,6 +16,8 @@ import { onAuthStateChanged } from "firebase/auth";
 
 import { setCurrentUser } from "./features/user/userSlice";
 import { useDispatch, useSelector } from "react-redux";
+import BlogPage from "./pages/blog-page/blog-page.component";
+import ContactPage from "./pages/contact-page/contact-page.component";
 
 function App() {
   const dispatch = useDispatch();
@@ -51,6 +53,8 @@ function App() {
           element={currentUser ? <Navigate to="/" /> : <SignInAndSignUp />}
         />
         <Route path="/checkout" element={<CheckOutPage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/contact" element={<ContactPage />} />
       </Routes>
     </>
   );
