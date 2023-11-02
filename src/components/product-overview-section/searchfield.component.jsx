@@ -1,13 +1,15 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { AiOutlineSearch } from "react-icons/ai";
 
 import "./searchfield.styles.scss";
 
 const SearchField = ({ searchQuery, onSearchChange }) => {
   return (
     <div className="searchfield-container">
-      <FontAwesomeIcon icon={faMagnifyingGlass} className="searchfield-icon" />
+      <span className="searchfield-icon">
+        <AiOutlineSearch />
+      </span>
+
       <input
         type="text"
         placeholder="Search products"

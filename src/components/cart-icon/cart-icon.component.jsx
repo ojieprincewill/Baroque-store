@@ -1,7 +1,6 @@
 import React from "react";
+import { HiShoppingCart } from "react-icons/hi";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { toggleCartDisplay } from "../../features/cart/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -19,7 +18,7 @@ const CartIcon = () => {
 
   return (
     <div className="cart-icon" onClick={handleCartIconClick}>
-      <FontAwesomeIcon icon={faCartShopping} className="shopping-icon" />
+      <HiShoppingCart className="shopping-icon" />
       <div className="item-count">{itemCount}</div>
     </div>
   );

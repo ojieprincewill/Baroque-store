@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart as fasHeart } from "@fortawesome/free-solid-svg-icons";
+import { FaRegHeart } from "react-icons/fa";
 
 import "./product.styles.scss";
 import Quickview from "./quickview/quickview.component";
@@ -46,7 +45,7 @@ const Product = ({ product }) => {
           className={`wishlist-icon ${isItemAdded ? "active" : ""}`}
           onClick={handleWishlistIconClick}
         >
-          <FontAwesomeIcon icon={fasHeart} />
+          <FaRegHeart />
         </div>
         <WishlistModal
           product={product}

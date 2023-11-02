@@ -1,6 +1,6 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineSearch } from "react-icons/ai";
 
 import "./search-button.styles.scss";
 
@@ -11,13 +11,10 @@ const SearchButton = ({ onClick, isActive }) => {
         className={`search-btn ${isActive && "active"}`}
         onClick={onClick}
       >
-        <span>
-          <FontAwesomeIcon
-            icon={isActive ? faTimes : faMagnifyingGlass}
-            className="search-icon"
-          />
+        <span className="searchicon">
+          {isActive ? <AiOutlineClose /> : <AiOutlineSearch />}
         </span>
-        Search
+        <div>Search</div>
       </button>
     </div>
   );

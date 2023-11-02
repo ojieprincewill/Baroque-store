@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 
 import "./blog-side.styles.scss";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { AiOutlineSearch } from "react-icons/ai";
 import { useSelector } from "react-redux";
 
 const BlogSide = () => {
@@ -15,7 +14,7 @@ const BlogSide = () => {
     <div>
       <div className="search-container">
         <input type="text" placeholder="Search" className="search" />
-        <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon" />
+        <AiOutlineSearch className="search-icon" />
       </div>
       <div className="categories-container">
         <p className="title">Categories</p>
@@ -30,23 +29,27 @@ const BlogSide = () => {
       <div className="featured-container">
         <p className="title">Featured Products</p>
         <div className="featured-products-container">
-          {featuredProducts.map((cartItem) => (
-            <div className="featured-flex">
-              <div className="img-cont">
-                <img
-                  src={cartItem.image}
-                  alt="featured"
-                  className="featured-image"
-                />
+          {featuredProducts.length === 0 ? (
+            <p className="message">There are currently no featured products</p>
+          ) : (
+            featuredProducts.map((cartItem) => (
+              <div className="featured-flex" key={cartItem.id}>
+                <div className="img-cont">
+                  <img
+                    src={cartItem.image}
+                    alt="featured"
+                    className="featured-image"
+                  />
+                </div>
+                <div className="featured-text">
+                  <Link to="/shop" className="name">
+                    {cartItem.title}
+                  </Link>
+                  <span className="price">${cartItem.price}</span>
+                </div>
               </div>
-              <div className="featured-text">
-                <Link to="/shop" className="name">
-                  {cartItem.title}
-                </Link>
-                <span className="price">${cartItem.price}</span>
-              </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </div>
       <div className="archive-container">

@@ -1,10 +1,7 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFacebookF,
-  faInstagram,
-  faPinterestP,
-} from "@fortawesome/free-brands-svg-icons";
+import { BiLogoFacebook } from "react-icons/bi";
+import { BiLogoInstagram } from "react-icons/bi";
+import { BiLogoPinterestAlt } from "react-icons/bi";
 
 import "./getintouch.styles.scss";
 
@@ -19,9 +16,9 @@ const GetInTouch = () => {
         </p>
       </div>
       <div className="icon-container">
-        <FontAwesomeIcon icon={faFacebookF} className="intouch-icon" />
-        <FontAwesomeIcon icon={faInstagram} className="intouch-icon" />
-        <FontAwesomeIcon icon={faPinterestP} className="intouch-icon" />
+        <BiLogoFacebook className="intouch-icon" />
+        <BiLogoInstagram className="intouch-icon" />
+        <BiLogoPinterestAlt className="intouch-icon" />
       </div>
     </div>
   );

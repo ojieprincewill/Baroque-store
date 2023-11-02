@@ -1,6 +1,5 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+
 import { auth } from "../../firebase/firebase.utils";
 import { signOut } from "firebase/auth";
 import { Link } from "react-router-dom";
@@ -9,6 +8,7 @@ import { useSelector } from "react-redux";
 import "./navigation.styles.scss";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartModal from "../cart-modal/cart-modal.component";
+import WishIcon from "../wishlist-icon/wish-icon.component";
 
 const Navigation = ({ className }) => {
   const currentUser = useSelector((state) => state.user.currentUser);
@@ -63,8 +63,8 @@ const Navigation = ({ className }) => {
           <div className="cartcontainer">
             <CartIcon />
           </div>
-          <div className="sidebar-container">
-            <FontAwesomeIcon icon={faBars} className="baricon" />
+          <div className="wishcontainer">
+            <WishIcon />
           </div>
         </div>
       </div>

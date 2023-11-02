@@ -1,6 +1,6 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFilter, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { AiOutlineClose } from "react-icons/ai";
+import { LuListFilter } from "react-icons/lu";
 
 import "./filter-button.styles.scss";
 
@@ -11,13 +11,10 @@ const FilterButton = ({ onClick, isActive }) => {
         className={`filter-btn ${isActive && "active"}`}
         onClick={onClick}
       >
-        <span>
-          <FontAwesomeIcon
-            icon={isActive ? faTimes : faFilter}
-            className="filter-icon"
-          />
+        <span className="filtericon">
+          {isActive ? <AiOutlineClose /> : <LuListFilter />}
         </span>
-        Filter
+        <div>Filter</div>
       </button>
     </div>
   );

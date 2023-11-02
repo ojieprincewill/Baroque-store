@@ -1,8 +1,7 @@
 import React from "react";
 
 import "./blog-list.styles.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { BsArrowRight } from "react-icons/bs";
 import Pagination from "../../components/product-overview-section/pagination.component";
 
 const BlogList = () => {
@@ -38,8 +37,7 @@ const BlogList = () => {
             <span className="black3">8 comments</span>
           </span>
           <span className="reading-link">
-            Continue Reading{" "}
-            <FontAwesomeIcon icon={faArrowRight} className="link-arrow" />
+            Continue Reading <BsArrowRight className="link-arrow" />
           </span>
         </div>
       </div>
@@ -75,8 +73,7 @@ const BlogList = () => {
             <span className="black3">8 comments</span>
           </span>
           <span className="reading-link">
-            Continue Reading{" "}
-            <FontAwesomeIcon icon={faArrowRight} className="link-arrow" />
+            Continue Reading <BsArrowRight className="link-arrow" />
           </span>
         </div>
       </div>
@@ -110,8 +107,7 @@ const BlogList = () => {
             <span className="black3">8 comments</span>
           </span>
           <span className="reading-link">
-            Continue Reading{" "}
-            <FontAwesomeIcon icon={faArrowRight} className="link-arrow" />
+            Continue Reading <BsArrowRight className="link-arrow" />
           </span>
         </div>
       </div>
