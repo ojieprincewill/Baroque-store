@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { AiOutlineMinus } from "react-icons/ai";
+import { AiOutlinePlus } from "react-icons/ai";
 
 import "./quantity-control.styles.scss";
 
@@ -19,11 +19,11 @@ const QuantityControl = () => {
   return (
     <div className="quantity-control">
       <div onClick={decreaseQuantity} className="control-decrease">
-        <FontAwesomeIcon icon={faMinus} />
+        <AiOutlineMinus />
       </div>
       <div className="quantityfield">{quantity}</div>
       <div onClick={increaseQuantity} className="control-increase">
-        <FontAwesomeIcon icon={faPlus} />
+        <AiOutlinePlus />
       </div>
     </div>
   );

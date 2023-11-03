@@ -1,14 +1,9 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faTimes,
-  faHeart as fasHeart,
-} from "@fortawesome/free-solid-svg-icons";
-import {
-  faFacebookF,
-  faTwitter,
-  faGooglePlusG,
-} from "@fortawesome/free-brands-svg-icons";
+import { FaRegHeart } from "react-icons/fa";
+import { AiOutlineClose } from "react-icons/ai";
+import { BiLogoFacebook } from "react-icons/bi";
+import { BiLogoTwitter } from "react-icons/bi";
+import { BiLogoGooglePlus } from "react-icons/bi";
 
 import "./quickview.styles.scss";
 import SizeAndColor from "./sizeandcolorselection.component";
@@ -20,7 +15,7 @@ const Quickview = ({ product, onClose }) => {
     <div className="quickview-modal">
       <div className="close-btn-container">
         <button className="close-button" onClick={onClose}>
-          <FontAwesomeIcon icon={faTimes} className="icon-close" />
+          <AiOutlineClose className="icon-close" />
         </button>
       </div>
       <div className="quickview-content">
@@ -41,19 +36,21 @@ const Quickview = ({ product, onClose }) => {
             <CartButton product={product} />
             <div className="icon-cont">
               <div className="tooltip">
-                <FontAwesomeIcon icon={fasHeart} className="wl-icon" />
+                <div className="wl-icon">
+                  <FaRegHeart />
+                </div>
                 <span className="tooltip-text">Add to Wishlist</span>
               </div>
               <div className="tooltip">
-                <FontAwesomeIcon icon={faFacebookF} className="modal-icon" />
+                <BiLogoFacebook className="modal-icon" />
                 <span className="tooltip-text">Facebook</span>
               </div>
               <div className="tooltip">
-                <FontAwesomeIcon icon={faTwitter} className="modal-icon" />
+                <BiLogoTwitter className="modal-icon" />
                 <span className="tooltip-text">Twitter</span>
               </div>
               <div className="tooltip">
-                <FontAwesomeIcon icon={faGooglePlusG} className="modal-icon" />
+                <BiLogoGooglePlus className="modal-icon" />
                 <span className="tooltip-text">Google Plus</span>
               </div>
             </div>

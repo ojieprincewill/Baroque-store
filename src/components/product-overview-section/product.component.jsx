@@ -1,24 +1,12 @@
 import React, { useState } from "react";
-import { FaRegHeart } from "react-icons/fa";
 
 import "./product.styles.scss";
 import Quickview from "./quickview/quickview.component";
-import WishlistModal from "./wishlist-modal/wishlist-modal.component";
+import WishAdd from "../wish-add-icon/wish-add-icon.component";
 
 const Product = ({ product }) => {
   const { image, title, price } = product;
   const [isQuickOpen, setIsQuickOpen] = useState(false);
-  const [isWishOpen, setIsWishOpen] = useState(false);
-  const [isItemAdded, setIsItemAdded] = useState(false);
-
-  const handleWishlistIconClick = () => {
-    setIsItemAdded(!isItemAdded);
-    setIsWishOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsWishOpen(false);
-  };
 
   const openQuickView = () => {
     setIsQuickOpen(true);
@@ -41,18 +29,9 @@ const Product = ({ product }) => {
           <p className="title">{title}</p>
           <p className="price">${price}</p>
         </div>
-        <div
-          className={`wishlist-icon ${isItemAdded ? "active" : ""}`}
-          onClick={handleWishlistIconClick}
-        >
-          <FaRegHeart />
+        <div>
+          <WishAdd product={product} />
         </div>
-        <WishlistModal
-          product={product}
-          isOpen={isWishOpen}
-          onClose={closeModal}
-          isAdded={isItemAdded}
-        />
       </div>
       {isQuickOpen && (
         <Quickview

@@ -9,10 +9,12 @@ import "./navigation.styles.scss";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartModal from "../cart-modal/cart-modal.component";
 import WishIcon from "../wishlist-icon/wish-icon.component";
+import WishModal from "../wish-modal/wish-modal.component";
 
 const Navigation = ({ className }) => {
   const currentUser = useSelector((state) => state.user.currentUser);
   const isCartModalOpen = useSelector((state) => state.cart.hidden);
+  const isWishModalOpen = useSelector((state) => state.wishList.hidden);
 
   const handleSignOut = async () => {
     try {
@@ -70,6 +72,7 @@ const Navigation = ({ className }) => {
       </div>
       <div className="nav-placeholder"></div>
       {isCartModalOpen ? null : <CartModal />}
+      {isWishModalOpen ? null : <WishModal />}
     </>
   );
 };

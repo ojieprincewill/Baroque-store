@@ -5,6 +5,7 @@ import storage from "redux-persist/lib/storage";
 import userReducer from "../features/user/userSlice";
 import cartReducer from "../features/cart/cartSlice";
 import productsReducer from "../features/products/productsSlice";
+import wishListReducer from "../features/wishlist/wishListSlice";
 
 const logger = createLogger();
 
@@ -12,12 +13,13 @@ const rootReducer = combineReducers({
   user: userReducer,
   cart: cartReducer,
   products: productsReducer,
+  wishList: wishListReducer,
 });
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["cart"],
+  whitelist: ["cart", "wishList"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
