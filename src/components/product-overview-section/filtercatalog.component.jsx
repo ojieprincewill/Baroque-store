@@ -14,8 +14,8 @@ const FilterCatalog = ({ handleFilterChange }) => {
       <div className="catalog">
         <SortBy handleFilterChange={handleFilterChange} />
         <PriceRange handleFilterChange={handleFilterChange} />
-        <ColorFilters />
-        <TagFilters />
+        <ColorFilters handleFilterChange={handleFilterChange} />
+        <TagFilters handleFilterChange={handleFilterChange} />
       </div>
     </div>
   );

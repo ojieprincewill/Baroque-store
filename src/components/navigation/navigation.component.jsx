@@ -2,7 +2,7 @@ import React from "react";
 
 import { auth } from "../../firebase/firebase.utils";
 import { signOut } from "firebase/auth";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import "./navigation.styles.scss";
@@ -15,6 +15,7 @@ const Navigation = ({ className }) => {
   const currentUser = useSelector((state) => state.user.currentUser);
   const isCartModalOpen = useSelector((state) => state.cart.hidden);
   const isWishModalOpen = useSelector((state) => state.wishList.hidden);
+  const location = useLocation();
 
   const handleSignOut = async () => {
     try {
@@ -33,22 +34,44 @@ const Navigation = ({ className }) => {
           </Link>
         </div>
         <div className="pagelink-container">
-          <Link to="/" className="pagelink">
+          <Link
+            to="/"
+            className={`pagelink ${location.pathname === "/" && "active"}`}
+          >
             Home
           </Link>
-          <Link to="/shop" className="pagelink">
+          <Link
+            to="/shop"
+            className={`pagelink ${location.pathname === "/shop" && "active"}`}
+          >
             Shop
           </Link>
-          <Link to="/checkout" className="pagelink">
+          <Link
+            to="/checkout"
+            className={`pagelink ${
+              location.pathname === "/checkout" && "active"
+            }`}
+          >
             Features
           </Link>
-          <Link to="/blog" className="pagelink">
+          <Link
+            to="/blog"
+            className={`pagelink ${location.pathname === "/blog" && "active"}`}
+          >
             Blog
           </Link>
-          <Link to="/about" className="pagelink">
+          <Link
+            to="/about"
+            className={`pagelink ${location.pathname === "/about" && "active"}`}
+          >
             About
           </Link>
-          <Link to="/contact" className="pagelink">
+          <Link
+            to="/contact"
+            className={`pagelink ${
+              location.pathname === "/contact" && "active"
+            }`}
+          >
             Contact
           </Link>
           {currentUser ? (
@@ -56,7 +79,12 @@ const Navigation = ({ className }) => {
               Sign Out
             </div>
           ) : (
-            <Link className="pagelink" to="/signin">
+            <Link
+              to="/signin"
+              className={`pagelink ${
+                location.pathname === "/signin" && "active"
+              }`}
+            >
               Sign In
             </Link>
           )}

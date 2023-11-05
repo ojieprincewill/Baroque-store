@@ -16,8 +16,12 @@ export const WishSlice = createSlice({
     toggleWishItems: (state, action) => {
       state.wishItems = toggleWishItem(state.wishItems, action.payload);
     },
+    clearWishList: (state) => {
+      state.wishItems = [];
+    },
   },
 });
 
-export const { toggleWishDisplay, toggleWishItems } = WishSlice.actions;
+export const { toggleWishDisplay, toggleWishItems, clearWishList } =
+  WishSlice.actions;
 export default WishSlice.reducer;

@@ -36,7 +36,7 @@ const CartModal = () => {
         </div>
         <div className="cart-items">
           {cartItems.length ? (
-            <div className="cart-items">
+            <div>
               {cartItems.map((cartItem) => (
                 <CartItem key={cartItem.id} products={cartItem} />
               ))}
@@ -46,9 +46,8 @@ const CartModal = () => {
           )}
         </div>
         <div className="footer-flex">
-          <button className="sidebar-button">VIEW CART</button>
           <button className="sidebar-button" onClick={handleCheckoutClick}>
-            CHECKOUT
+            GO TO CHECKOUT
           </button>
         </div>
       </div>

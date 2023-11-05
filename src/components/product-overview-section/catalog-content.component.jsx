@@ -60,7 +60,7 @@ export const PriceRange = ({ handleFilterChange }) => {
   );
 };
 
-export const ColorFilters = () => {
+export const ColorFilters = ({ handleFilterChange }) => {
   const colorOptions = ["Black", "Blue", "Gray", "Green", "Red", "White"];
 
   return (
@@ -68,7 +68,11 @@ export const ColorFilters = () => {
       <p className="title">Color</p>
       <div className="option-container">
         {colorOptions.map((option) => (
-          <div key={option} className={`option color-${option.toLowerCase()}`}>
+          <div
+            key={option}
+            className={`option color-${option.toLowerCase()}`}
+            onClick={() => handleFilterChange("color", option)}
+          >
             <span className="color-icon">
               <FontAwesomeIcon
                 icon={faCircle}
@@ -83,7 +87,7 @@ export const ColorFilters = () => {
   );
 };
 
-export const TagFilters = () => {
+export const TagFilters = ({ handleFilterChange }) => {
   const tagOptions = [
     "All",
     "Fashion",
@@ -98,7 +102,11 @@ export const TagFilters = () => {
       <p className="title">Tags</p>
       <div className="button-container">
         {tagOptions.map((option) => (
-          <p key={option} className="tag-btn">
+          <p
+            key={option}
+            className="tag-btn"
+            onClick={() => handleFilterChange("tag", option)}
+          >
             {option}
           </p>
         ))}

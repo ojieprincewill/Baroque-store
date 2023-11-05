@@ -38,6 +38,10 @@ const ProductOverview = ({ className }) => {
     return { minPrice, maxPrice };
   };
 
+  const ErrorMessage = () => {
+    return <p className="error-message">No products available</p>;
+  };
+
   useEffect(() => {
     let isMounted = true;
 
@@ -103,6 +107,15 @@ const ProductOverview = ({ className }) => {
       case "Default":
         sortedProducts.sort((a, b) => a.id - b.id);
         break;
+      case "Popularity":
+        sortedProducts.sort((a, b) => a.popularity - b.popularity);
+        break;
+      case "Average rating":
+        sortedProducts.sort((a, b) => a.averageRating - b.averageRating);
+        break;
+      case "Newness":
+        sortedProducts.sort((a, b) => a.dateAdded - b.dateAdded);
+        break;
       case "Price: Low to High":
         sortedProducts.sort((a, b) => a.price - b.price);
         break;
@@ -155,9 +168,7 @@ const ProductOverview = ({ className }) => {
         />
       )}
 
-      {!loading && filteredProducts.length === 0 && (
-        <p>No products available.</p>
-      )}
+      {!loading && filteredProducts.length === 0 && { ErrorMessage }}
 
       <ProductList loading={loading} products={filteredProducts} />
     </div>

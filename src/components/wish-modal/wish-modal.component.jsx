@@ -2,8 +2,12 @@ import React from "react";
 
 import "./wish-modal.styles.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleWishDisplay } from "../../features/wishlist/wishListSlice";
+import {
+  clearWishList,
+  toggleWishDisplay,
+} from "../../features/wishlist/wishListSlice";
 import WishItem from "../wish-item/wish-item.component";
+import { addItem } from "../../features/cart/cartSlice";
 
 const WishModal = () => {
   const wishItems = useSelector((state) => state.wishList.wishItems);
@@ -11,6 +15,14 @@ const WishModal = () => {
 
   const handleWishClose = () => {
     dispatch(toggleWishDisplay());
+  };
+
+  const handleAddAllItems = () => {
+    wishItems.forEach((item) => {
+      dispatch(addItem(item));
+    });
+
+    dispatch(clearWishList());
   };
 
   return (
@@ -37,6 +49,11 @@ const WishModal = () => {
               There are no items in your wishlist
             </span>
           )}
+        </div>
+        <div className="footer-flex">
+          <button className="sidebar-button" onClick={handleAddAllItems}>
+            ADD ITEMS TO CART
+          </button>
         </div>
       </div>
     </div>

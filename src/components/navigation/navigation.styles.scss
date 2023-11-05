@@ -45,12 +45,17 @@
       padding: 0 5px;
       margin: 0 10px;
       color: #e6e6e6;
-    }
-
-    :hover {
-      color: #7685e6;
       transition: ease-in 0.2s;
       cursor: pointer;
+      text-transform: capitalize;
+
+      &:hover {
+        color: #7685e6;
+      }
+      &.active,
+      &:active {
+        color: #7685e6;
+      }
     }
   }
 
@@ -182,12 +187,14 @@
       padding: 0 5px;
       margin: 0 10px;
       color: #333;
-    }
 
-    :hover {
-      color: #7685e6;
-      transition: ease-in 0.2s;
-      cursor: pointer;
+      &:hover {
+        color: #7685e6;
+      }
+      &.active,
+      &:active {
+        color: #7685e6;
+      }
     }
   }
 
