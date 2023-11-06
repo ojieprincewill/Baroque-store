@@ -11,6 +11,7 @@
   background-position: center;
   background-size: cover;
   position: relative;
+  overflow: hidden;
 
   &::before {
     content: "";
@@ -20,27 +21,6 @@
     background-color: rgba(128, 0, 128, 0);
     opacity: 0;
     transition: background-color 0.5s ease, opacity 0.5s ease;
-  }
-
-  &:hover {
-    &::before {
-      background-color: #7685e6;
-      opacity: 0.75;
-    }
-
-    .shop-link {
-      display: block;
-      transform: translateY(0);
-      border-bottom: 2px solid #fff;
-      cursor: pointer;
-    }
-
-    span {
-      position: relative;
-      z-index: 1;
-      color: #fff;
-      transition: color 0.3s ease;
-    }
   }
 
   .content {
@@ -58,6 +38,52 @@
     .subtitle {
       font-weight: lighter;
       font-size: 16px;
+    }
+  }
+
+  .shoplink-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0 25px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+
+    .shop-link {
+      position: relative;
+      display: none;
+      font-weight: lighter;
+      font-size: 16px;
+      margin: 0;
+      padding: 2px 0;
+      color: #fff;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      transition: transform 0.3s ease, border-bottom-color 0.3s ease-out;
+    }
+  }
+
+  &:hover {
+    &::before {
+      background-color: #7685e6;
+      opacity: 0.75;
+    }
+
+    .shoplink-container {
+      transform: translateY(0);
+
+      .shop-link {
+        display: inline-block;
+        transform: translateY(-100%);
+        border-bottom-color: #fff;
+      }
+    }
+
+    span {
+      position: relative;
+      z-index: 1;
+      color: #fff;
+      transition: color 0.3s ease;
     }
   }
 }

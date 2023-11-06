@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div className="text-container">
+    <div className="header">
       <p className="small">New Season</p>
       <p className="large">ALL NEW COLLECTIONS</p>
       <Link to="/shop">
