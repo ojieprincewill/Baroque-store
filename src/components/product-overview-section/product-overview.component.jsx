@@ -23,6 +23,7 @@ const ProductOverview = ({ className }) => {
   });
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const parsePriceRange = (priceRange) => {
     const [min, max] = priceRange.split(" - ");
@@ -36,10 +37,6 @@ const ProductOverview = ({ className }) => {
     }
 
     return { minPrice, maxPrice };
-  };
-
-  const ErrorMessage = () => {
-    return <p className="error-message">No products available</p>;
   };
 
   useEffect(() => {
@@ -138,11 +135,33 @@ const ProductOverview = ({ className }) => {
   };
 
   const handleFilterChange = (filterType, value) => {
-    if (filterType === "color" || filterType === "tags") {
-      console.log(`${filterType} filter is not available for these products.`);
+    console.log("Filter changed:", filterType, value);
+    const validSortOptions = new Set([
+      "Default",
+      "Price: Low to High",
+      "Price: High to Low",
+    ]);
+
+    if (filterType === "color") {
+      setErrorMessage(
+        `${value} color filter is not available for these products.`
+      );
+      return;
+    }
+
+    if (filterType === "tags") {
+      setErrorMessage("Tags filter is not available for these products.");
+      return;
+    }
+
+    if (filterType === "sortBy" && !validSortOptions.has(value)) {
+      setErrorMessage(
+        `Sorting by ${value} is not available for these products.`
+      );
       return;
     }
     setFilters({ ...filters, [filterType]: value });
+    setErrorMessage(null);
   };
 
   return (
@@ -168,9 +187,17 @@ const ProductOverview = ({ className }) => {
         />
       )}
 
-      {!loading && filteredProducts.length === 0 && { ErrorMessage }}
+      {!loading && errorMessage && (
+        <p className="error-message">{errorMessage}</p>
+      )}
 
-      <ProductList loading={loading} products={filteredProducts} />
+      {!loading && filteredProducts.length === 0 && (
+        <p className="error-message">No products available</p>
+      )}
+
+      {!loading && !errorMessage && filteredProducts.length > 0 && (
+        <ProductList loading={loading} products={filteredProducts} />
+      )}
     </div>
   );
 };

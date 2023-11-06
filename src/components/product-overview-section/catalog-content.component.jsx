@@ -88,14 +88,7 @@ export const ColorFilters = ({ handleFilterChange }) => {
 };
 
 export const TagFilters = ({ handleFilterChange }) => {
-  const tagOptions = [
-    "All",
-    "Fashion",
-    "Lifestyle",
-    "Denim",
-    "Streetstyle",
-    "Crafts",
-  ];
+  const tagOptions = ["Fashion", "Lifestyle", "Denim", "Streetstyle", "Crafts"];
 
   return (
     <div className="content">
