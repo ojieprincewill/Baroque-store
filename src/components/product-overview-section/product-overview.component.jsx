@@ -7,7 +7,8 @@ import FilterCatalog from "./filtercatalog.component";
 import SearchField from "./searchfield.component";
 import ProductList from "./product-list.component";
 import { useDispatch, useSelector } from "react-redux";
-import { setProducts } from "../../features/products/productsSlice";
+import { fetchProducts } from "../../features/products/productsSlice";
+import Spinner from "../with-spinner/spinner.component";
 
 const ProductOverview = ({ className }) => {
   const dispatch = useDispatch();
@@ -40,36 +41,15 @@ const ProductOverview = ({ className }) => {
   };
 
   useEffect(() => {
-    let isMounted = true;
-
-    const fetchData = async () => {
-      try {
-        const response = await fetch("https://fakestoreapi.com/products");
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-
-        const data = await response.json();
-        if (isMounted) {
-          const filteredProducts = data.filter(
-            (product) => product.category !== "electronics"
-          );
-          dispatch(setProducts(filteredProducts));
-          setLoading(false);
-        }
-      } catch (error) {
+    dispatch(fetchProducts())
+      .unwrap()
+      .then(() => {
+        setLoading(false);
+      })
+      .catch((error) => {
         console.error("Error fetching products:", error);
-        if (isMounted) {
-          setLoading(false);
-        }
-      }
-    };
-
-    fetchData();
-
-    return () => {
-      isMounted = false;
-    };
+        setLoading(false);
+      });
   }, [dispatch]);
 
   useEffect(() => {
@@ -186,6 +166,8 @@ const ProductOverview = ({ className }) => {
           onSearchChange={handleSearchChange}
         />
       )}
+
+      {loading && <Spinner />}
 
       {!loading && errorMessage && (
         <p className="error-message">{errorMessage}</p>

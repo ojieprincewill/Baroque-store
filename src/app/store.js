@@ -7,8 +7,6 @@ import cartReducer from "../features/cart/cartSlice";
 import productsReducer from "../features/products/productsSlice";
 import wishListReducer from "../features/wishlist/wishListSlice";
 
-const logger = createLogger();
-
 const rootReducer = combineReducers({
   user: userReducer,
   cart: cartReducer,
@@ -22,11 +20,19 @@ const persistConfig = {
   whitelist: ["cart", "wishList"],
 };
 
+let middlewares = [];
+
+if (process.env.NODE_ENV === "development") {
+  const logger = createLogger();
+  middlewares = [...middlewares, logger];
+}
+
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
   reducer: persistedReducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(...middlewares),
 });
 
 const persistor = persistStore(store);
