@@ -1,0 +1,21 @@
+.mobile-pagelink-container {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  background-color: #7685e6;
+  padding: 10px 0;
+
+  .mobile-pagelink {
+    padding: 8px 20px;
+    margin: 0;
+    color: #fff;
+    cursor: pointer;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .mobile-pagelink-container {
+    display: flex;
+  }
+}

@@ -1,0 +1,12 @@
+.fs-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+@media only screen and (max-width: 1024px) {
+  .fs-button-container {
+    justify-content: flex-start;
+    margin-top: 20px;
+  }
+}

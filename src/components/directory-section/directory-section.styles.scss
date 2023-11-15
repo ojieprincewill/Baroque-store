@@ -1,0 +1,11 @@
+.directory-section {
+  display: flex;
+  align-items: center;
+  padding: 40px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .directory-section {
+    padding: 20px;
+  }
+}
