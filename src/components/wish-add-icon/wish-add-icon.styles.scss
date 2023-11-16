@@ -1,0 +1,18 @@
+.wishlist-icon {
+  margin: 3px 0;
+  padding: 3px;
+  font-size: 16px;
+  color: #888;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &.active {
+    color: #7685e6;
+    transition: all 0.3s ease;
+  }
+
+  &:hover {
+    color: #7685e6;
+    transition: all 0.3s ease;
+  }
+}

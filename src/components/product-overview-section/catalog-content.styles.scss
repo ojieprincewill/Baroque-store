@@ -1,0 +1,123 @@
+.content {
+  //   margin-right: 40px;
+
+  .title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    padding: 0;
+    margin: 0 0 16px 0;
+  }
+
+  .option {
+    margin: 0 0 8px 0;
+  }
+
+  .option-container {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    .colortext {
+      color: #888;
+      border-bottom: 1px solid transparent;
+      transition: all 0.3s ease;
+      cursor: pointer;
+
+      &.active,
+      &:hover {
+        color: #7685e6;
+        border-color: #7685e6;
+      }
+    }
+  }
+
+  .color-icon {
+    content: "\f111";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 12px;
+    margin-right: 8px;
+  }
+
+  .color-black {
+    color: black;
+  }
+
+  .color-blue {
+    color: blue;
+  }
+
+  .color-gray {
+    color: gray;
+  }
+
+  .color-green {
+    color: green;
+  }
+
+  .color-red {
+    color: red;
+  }
+
+  .color-white {
+    color: white;
+  }
+
+  .catalog-button-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    .catalog-tag-btn {
+      color: #888;
+      font-size: 14px;
+      padding: 5px 10px;
+      margin: 0 5px 5px 0;
+      border: 1px solid #888;
+      text-align: center;
+      border-radius: 20px;
+      background: transparent;
+      transition: all 0.3s ease;
+      cursor: pointer;
+
+      &:hover {
+        color: #7685e6;
+        border-color: #7685e6;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  .content {
+    .catalog-button-container {
+      display: flex;
+      flex-direction: column;
+
+      .catalog-tag-btn {
+        padding: 5px 10px;
+        margin: 0 0 7px 0;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .content {
+    .title {
+      margin: 16px 0;
+    }
+
+    .catalog-button-container {
+      display: flex;
+      flex-direction: row;
+
+      .catalog-tag-btn {
+        padding: 5px 10px;
+        margin: 0 7px 0 0;
+      }
+    }
+  }
+}
