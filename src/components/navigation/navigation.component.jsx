@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
+=======
+import React from "react";
+>>>>>>> origin/master
 
 import { auth } from "../../firebase/firebase.utils";
 import { signOut } from "firebase/auth";
@@ -10,13 +14,17 @@ import CartIcon from "../cart-icon/cart-icon.component";
 import CartModal from "../cart-modal/cart-modal.component";
 import WishIcon from "../wishlist-icon/wish-icon.component";
 import WishModal from "../wish-modal/wish-modal.component";
+<<<<<<< HEAD
 import { FiMenu, FiX } from "react-icons/fi";
 import MobileNavigation from "./mobile-navigation.component";
+=======
+>>>>>>> origin/master
 
 const Navigation = ({ className }) => {
   const currentUser = useSelector((state) => state.user.currentUser);
   const isCartModalOpen = useSelector((state) => state.cart.hidden);
   const isWishModalOpen = useSelector((state) => state.wishList.hidden);
+<<<<<<< HEAD
   const [navDisplay, setNavDisplay] = useState(false);
   const location = useLocation();
 
@@ -24,6 +32,10 @@ const Navigation = ({ className }) => {
     setNavDisplay(!navDisplay);
   };
 
+=======
+  const location = useLocation();
+
+>>>>>>> origin/master
   const handleSignOut = async () => {
     try {
       signOut(auth);
@@ -63,9 +75,13 @@ const Navigation = ({ className }) => {
           </Link>
           <Link
             to="/blog"
+<<<<<<< HEAD
             className={`pagelink ${
               location.pathname.includes("/blog") && "active"
             }`}
+=======
+            className={`pagelink ${location.pathname === "/blog" && "active"}`}
+>>>>>>> origin/master
           >
             Blog
           </Link>
@@ -105,6 +121,7 @@ const Navigation = ({ className }) => {
           <div className="wishcontainer">
             <WishIcon />
           </div>
+<<<<<<< HEAD
           <div className="burger-icon-cont" onClick={handleBurgerClick}>
             {navDisplay ? (
               <FiX className="burger-icon" />
@@ -120,6 +137,10 @@ const Navigation = ({ className }) => {
           handleSignOut={handleSignOut}
         />
       ) : null}
+=======
+        </div>
+      </div>
+>>>>>>> origin/master
       <div className="nav-placeholder"></div>
       {isCartModalOpen ? null : <CartModal />}
       {isWishModalOpen ? null : <WishModal />}

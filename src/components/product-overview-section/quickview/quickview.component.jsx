@@ -1,5 +1,4 @@
 import React from "react";
-
 import { AiOutlineClose } from "react-icons/ai";
 import { BiLogoFacebook } from "react-icons/bi";
 import { BiLogoTwitter } from "react-icons/bi";
