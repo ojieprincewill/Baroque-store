@@ -29,7 +29,8 @@
 
 @media only screen and (max-width: 1024px) {
   .tags-container {
-    width: 100%;
+    max-width: 100%;
+    flex-wrap: wrap;
 
     .section-tag {
       color: #888;

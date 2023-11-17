@@ -98,12 +98,12 @@
   body .cart-sidebar-modal {
     .cart-sidebar-content {
       padding: 20px;
-      width: 50vw;
+      width: 50%;
 
       .header-flex {
         display: grid;
         grid-template-columns: 60% 40%;
-        gap: 60px;
+        gap: 40px;
 
         .side-title {
           font-size: 20px;
