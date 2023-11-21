@@ -6,22 +6,46 @@ import "./mobile-navigation.styles.scss";
 const MobileNavigation = ({ handleSignOut, currentUser }) => {
   return (
     <div className="mobile-pagelink-container">
-      <Link to="/" className="mobile-pagelink">
+      <Link
+        to="/"
+        onClick={() => window.scrollTo(0, 0)}
+        className="mobile-pagelink"
+      >
         Home
       </Link>
-      <Link to="/shop" className="mobile-pagelink">
+      <Link
+        to="/shop"
+        onClick={() => window.scrollTo(0, 0)}
+        className="mobile-pagelink"
+      >
         Shop
       </Link>
-      <Link to="/checkout" className="mobile-pagelink">
+      <Link
+        to="/checkout"
+        onClick={() => window.scrollTo(0, 0)}
+        className="mobile-pagelink"
+      >
         Features
       </Link>
-      <Link to="/blog" className="mobile-pagelink">
+      <Link
+        to="/blog"
+        onClick={() => window.scrollTo(0, 0)}
+        className="mobile-pagelink"
+      >
         Blog
       </Link>
-      <Link to="/about" className="mobile-pagelink">
+      <Link
+        to="/about"
+        onClick={() => window.scrollTo(0, 0)}
+        className="mobile-pagelink"
+      >
         About
       </Link>
-      <Link to="/contact" className="mobile-pagelink">
+      <Link
+        to="/contact"
+        onClick={() => window.scrollTo(0, 0)}
+        className="mobile-pagelink"
+      >
         Contact
       </Link>
       {currentUser ? (
@@ -29,7 +53,11 @@ const MobileNavigation = ({ handleSignOut, currentUser }) => {
           Sign Out
         </div>
       ) : (
-        <Link to="/signin" className="mobile-pagelink">
+        <Link
+          to="/signin"
+          onClick={() => window.scrollTo(0, 0)}
+          className="mobile-pagelink"
+        >
           Sign In
         </Link>
       )}

@@ -20,7 +20,7 @@ const BlogList = () => {
             </div>
           </div>
           <div className="blog-details">
-            <Link to={`/blog/${blog.id}`}>
+            <Link to={`/blog/${blog.id}`} onClick={() => window.scrollTo(0, 0)}>
               <p className="title">{blog.title}</p>
             </Link>
             <p className="text">{blog.content}</p>
@@ -35,7 +35,10 @@ const BlogList = () => {
                 </span>
                 <span className="black3">8 comments</span>
               </span>
-              <Link to={`/blog/${blog.id}`}>
+              <Link
+                to={`/blog/${blog.id}`}
+                onClick={() => window.scrollTo(0, 0)}
+              >
                 <span className="reading-link">
                   Continue Reading <BsArrowRight className="link-arrow" />
                 </span>

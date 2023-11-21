@@ -36,25 +36,28 @@ const Navigation = ({ className }) => {
     <>
       <div className={`${className}`}>
         <div className="logo-container">
-          <Link to="/" className="logo">
+          <Link to="/" onClick={() => window.scrollTo(0, 0)} className="logo">
             BAROQUE
           </Link>
         </div>
         <div className="pagelink-container">
           <Link
             to="/"
+            onClick={() => window.scrollTo(0, 0)}
             className={`pagelink ${location.pathname === "/" && "active"}`}
           >
             Home
           </Link>
           <Link
             to="/shop"
+            onClick={() => window.scrollTo(0, 0)}
             className={`pagelink ${location.pathname === "/shop" && "active"}`}
           >
             Shop
           </Link>
           <Link
             to="/checkout"
+            onClick={() => window.scrollTo(0, 0)}
             className={`pagelink ${
               location.pathname === "/checkout" && "active"
             }`}
@@ -63,6 +66,7 @@ const Navigation = ({ className }) => {
           </Link>
           <Link
             to="/blog"
+            onClick={() => window.scrollTo(0, 0)}
             className={`pagelink ${
               location.pathname.includes("/blog") && "active"
             }`}
@@ -71,12 +75,14 @@ const Navigation = ({ className }) => {
           </Link>
           <Link
             to="/about"
+            onClick={() => window.scrollTo(0, 0)}
             className={`pagelink ${location.pathname === "/about" && "active"}`}
           >
             About
           </Link>
           <Link
             to="/contact"
+            onClick={() => window.scrollTo(0, 0)}
             className={`pagelink ${
               location.pathname === "/contact" && "active"
             }`}
@@ -90,6 +96,7 @@ const Navigation = ({ className }) => {
           ) : (
             <Link
               to="/signin"
+              onClick={() => window.scrollTo(0, 0)}
               className={`pagelink ${
                 location.pathname === "/signin" && "active"
               }`}

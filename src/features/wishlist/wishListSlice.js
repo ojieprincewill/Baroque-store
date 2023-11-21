@@ -16,12 +16,21 @@ export const WishSlice = createSlice({
     toggleWishItems: (state, action) => {
       state.wishItems = toggleWishItem(state.wishItems, action.payload);
     },
+    removeWishItem: (state, action) => {
+      state.wishItems = state.wishItems.filter(
+        (item) => item.id !== action.payload.id
+      );
+    },
     clearWishList: (state) => {
       state.wishItems = [];
     },
   },
 });
 
-export const { toggleWishDisplay, toggleWishItems, clearWishList } =
-  WishSlice.actions;
+export const {
+  toggleWishDisplay,
+  toggleWishItems,
+  clearWishList,
+  removeWishItem,
+} = WishSlice.actions;
 export default WishSlice.reducer;

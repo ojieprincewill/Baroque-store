@@ -19,6 +19,7 @@ import { useDispatch, useSelector } from "react-redux";
 import BlogPage from "./pages/blog-page/blog-page.component";
 import ContactPage from "./pages/contact-page/contact-page.component";
 import BlogDetailsPage from "./pages/blog-page/blog-details-page.component";
+import WithSpinner from "./components/with-spinner/with-spinner.component";
 function App() {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.user.currentUser);
@@ -41,21 +42,36 @@ function App() {
     };
   }, [dispatch]);
 
+  const HomePageWithSpinner = WithSpinner(Home);
+  const ShopPageWithSpinner = WithSpinner(Shop);
+  const AboutPageWithSpinner = WithSpinner(AboutPage);
+  const SignInAndSignUpPageWithSpinner = WithSpinner(SignInAndSignUp);
+  const CheckOutPageWithSpinner = WithSpinner(CheckOutPage);
+  const BlogPageWithSpinner = WithSpinner(BlogPage);
+  const BlogDetailsPageWithSpinner = WithSpinner(BlogDetailsPage);
+  const ContactPageWithSpinner = WithSpinner(ContactPage);
+
   return (
     <>
       <Routes>
-        <Route index element={<Home />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/shop" element={<Shop />} />
-        <Route path="/about" element={<AboutPage />} />
+        <Route index element={<HomePageWithSpinner />} />
+        <Route path="/" element={<HomePageWithSpinner />} />
+        <Route path="/shop" element={<ShopPageWithSpinner />} />
+        <Route path="/about" element={<AboutPageWithSpinner />} />
         <Route
           path="/signin"
-          element={currentUser ? <Navigate to="/" /> : <SignInAndSignUp />}
+          element={
+            currentUser ? (
+              <Navigate to="/" />
+            ) : (
+              <SignInAndSignUpPageWithSpinner />
+            )
+          }
         />
-        <Route path="/checkout" element={<CheckOutPage />} />
-        <Route path="/blog" element={<BlogPage />} />
-        <Route path="/blog/:blogId" element={<BlogDetailsPage />} />
-        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/checkout" element={<CheckOutPageWithSpinner />} />
+        <Route path="/blog" element={<BlogPageWithSpinner />} />
+        <Route path="/blog/:blogId" element={<BlogDetailsPageWithSpinner />} />
+        <Route path="/contact" element={<ContactPageWithSpinner />} />
       </Routes>
     </>
   );

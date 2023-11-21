@@ -21,7 +21,11 @@ const MenuItem = ({ title, imageUrl, subTitle }) => {
         <span className="subtitle">{subTitle}</span>
       </div>
       <div className="shoplink-container">
-        <Link to="/shop" className="shop-link">
+        <Link
+          to="/shop"
+          onClick={() => window.scrollTo(0, 0)}
+          className="shop-link"
+        >
           SHOP NOW
         </Link>
       </div>

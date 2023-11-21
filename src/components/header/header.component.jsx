@@ -8,7 +8,7 @@ const Header = () => {
     <div className="header">
       <p className="small">New Season</p>
       <p className="large">ALL NEW COLLECTIONS</p>
-      <Link to="/shop">
+      <Link to="/shop" onClick={() => window.scrollTo(0, 0)}>
         <div className="btn">
           <button className="shop-btn">SHOP NOW</button>
         </div>

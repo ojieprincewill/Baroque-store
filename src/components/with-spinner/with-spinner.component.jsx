@@ -1,22 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Spinner from "./spinner.component";
 
-const WithLoadingSpinner = ({ children }) => {
-  const [loading, setLoading] = useState(true);
+const WithSpinner = (WrappedComponent) => {
+  const WithLoadingSpinner = (props) => {
+    const [pageLoaded, setPageLoaded] = useState(false);
 
-  useEffect(() => {
-    const handleLoad = () => {
-      setLoading(false);
-    };
+    useEffect(() => {
+      const simulateLoad = async () => {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    window.addEventListener("load", handleLoad);
+        setPageLoaded(true);
+      };
 
-    return () => {
-      window.removeEventListener("load", handleLoad);
-    };
-  }, []);
+      simulateLoad();
 
-  return <>{loading ? <Spinner /> : children}</>;
+      return () => {
+        setPageLoaded(false);
+      };
+    }, []);
+
+    return (
+      <div>{pageLoaded ? <WrappedComponent {...props} /> : <Spinner />}</div>
+    );
+  };
+
+  return WithLoadingSpinner;
 };
 
-export default WithLoadingSpinner;
+export default WithSpinner;
