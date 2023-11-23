@@ -8,9 +8,9 @@ import {
   TagFilters,
 } from "./catalog-content.component";
 
-const FilterCatalog = ({ handleFilterChange }) => {
+const FilterCatalog = ({ handleFilterChange, catalogActive }) => {
   return (
-    <div className="catalog-container">
+    <div className={`filter-catalog ${catalogActive ? "animate" : ""}`}>
       <div className="catalog">
         <SortBy handleFilterChange={handleFilterChange} />
         <PriceRange handleFilterChange={handleFilterChange} />

@@ -128,7 +128,7 @@ const Navigation = ({ className }) => {
         />
       ) : null}
       <div className="nav-placeholder"></div>
-      {isCartModalOpen ? null : <CartModal />}
+      {isCartModalOpen ? null : <CartModal cartModalActive={isCartModalOpen} />}
       {isWishModalOpen ? null : <WishModal />}
     </>
   );

@@ -1,3 +1,14 @@
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .quickview-modal {
   position: fixed;
   top: 0;
@@ -8,6 +19,7 @@
   display: flex;
   flex-direction: column;
   z-index: 9999;
+  animation: fadeIn 0.3s ease;
 
   .close-btn-container {
     display: flex;
@@ -43,6 +55,7 @@
     max-height: 85vh;
     overflow-y: auto;
     margin: 0 auto;
+    animation: fadeInScale 0.3s ease;
 
     .modal-grid {
       display: grid;

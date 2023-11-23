@@ -1,6 +1,25 @@
+@keyframes expandHeight {
+  0% {
+    max-height: 0;
+    opacity: 0.5;
+  }
+  100% {
+    max-height: 280px;
+    opacity: 1;
+  }
+}
+
 .searchfield-container {
   margin-top: 30px;
   position: relative;
+  max-height: 0;
+  transition: max-height 1s ease-in-out, opacity 1s ease-in-out;
+
+  &.animate {
+    animation: expandHeight 1s ease;
+    max-height: 280px;
+    opacity: 1;
+  }
 
   .searchfield-icon {
     position: absolute;

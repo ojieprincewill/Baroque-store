@@ -20,10 +20,18 @@ const BlogDetails = () => {
   return (
     <>
       <div className="breadcrumbs">
-        <Link to="/" className="breadlink">
+        <Link
+          to="/"
+          onClick={() => window.scrollTo(0, 0)}
+          className="breadlink"
+        >
           Home <span className="arrow">{">"}</span>
         </Link>{" "}
-        <Link to="/blog" className="breadlink">
+        <Link
+          to="/blog"
+          onClick={() => window.scrollTo(0, 0)}
+          className="breadlink"
+        >
           Blog <span className="arrow">{">"}</span>
         </Link>
         <span className="breadtitle">{selectedBlog.title}</span>

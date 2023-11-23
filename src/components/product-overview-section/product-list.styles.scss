@@ -16,3 +16,9 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+@media only screen and (max-width: 280px) {
+  .product-list {
+    grid-template-columns: 1fr;
+  }
+}

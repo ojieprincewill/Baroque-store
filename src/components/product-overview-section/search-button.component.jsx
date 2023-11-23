@@ -4,12 +4,12 @@ import { AiOutlineSearch } from "react-icons/ai";
 
 import "./search-button.styles.scss";
 
-const SearchButton = ({ onClick, isActive }) => {
+const SearchButton = ({ toggleActiveButton, isActive }) => {
   return (
     <div>
       <button
         className={`search-btn ${isActive && "active"}`}
-        onClick={onClick}
+        onClick={toggleActiveButton}
       >
         <span className="searchicon">
           {isActive ? <AiOutlineClose /> : <AiOutlineSearch />}

@@ -4,12 +4,12 @@ import { LuListFilter } from "react-icons/lu";
 
 import "./filter-button.styles.scss";
 
-const FilterButton = ({ onClick, isActive }) => {
+const FilterButton = ({ toggleActiveButton, isActive }) => {
   return (
     <div>
       <button
         className={`filter-btn ${isActive && "active"}`}
-        onClick={onClick}
+        onClick={toggleActiveButton}
       >
         <span className="filtericon">
           {isActive ? <AiOutlineClose /> : <LuListFilter />}

@@ -1,14 +1,32 @@
-.catalog-container {
-  display: block;
+@keyframes expandHeight {
+  0% {
+    max-height: 0;
+    opacity: 0.5;
+  }
+  100% {
+    max-height: 280px;
+    opacity: 1;
+  }
+}
+
+.filter-catalog {
   margin-top: 30px;
+  max-height: 0;
   background-color: #f2f2f2;
   padding: 20px 40px;
+  transition: max-height 0.5s ease-in-out, opacity 1s ease-in-out;
 
   .catalog {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
+  }
+
+  &.animate {
+    animation: expandHeight 0.5s ease;
+    max-height: 280px;
+    opacity: 1;
   }
 }
 

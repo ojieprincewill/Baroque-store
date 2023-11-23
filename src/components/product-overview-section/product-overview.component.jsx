@@ -14,7 +14,7 @@ const ProductOverview = ({ className }) => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
   const [selectedCategory, setSelectedCategory] = useState("all Products");
-  const [activeButton, setActiveButton] = useState(null);
+  const [activeButton, setActiveButton] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [filters, setFilters] = useState({
     sortBy: "Default",
@@ -25,6 +25,15 @@ const ProductOverview = ({ className }) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
+
+  const toggleActiveButton = (buttonName) => {
+    if (activeButton === buttonName) {
+      setActiveButton(!activeButton);
+    } else {
+      setActiveButton(!activeButton);
+      setActiveButton(buttonName);
+    }
+  };
 
   const parsePriceRange = (priceRange) => {
     const [min, max] = priceRange.split(" - ");
@@ -154,14 +163,18 @@ const ProductOverview = ({ className }) => {
         />
         <FilterAndSearch
           activeButton={activeButton}
-          setActiveButton={setActiveButton}
+          toggleActiveButton={toggleActiveButton}
         />
       </div>
       {activeButton === "filter" && (
-        <FilterCatalog handleFilterChange={handleFilterChange} />
+        <FilterCatalog
+          catalogActive={activeButton === "filter"}
+          handleFilterChange={handleFilterChange}
+        />
       )}
       {activeButton === "search" && (
         <SearchField
+          searchActive={activeButton === "search"}
           searchQuery={searchQuery}
           onSearchChange={handleSearchChange}
         />

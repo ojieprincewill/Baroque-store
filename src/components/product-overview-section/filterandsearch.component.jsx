@@ -4,24 +4,16 @@ import "./filterandsearch.styles.scss";
 import FilterButton from "./filter-button.component";
 import SearchButton from "./search-button.component";
 
-const FilterAndSearch = ({ activeButton, setActiveButton }) => {
-  const handleButtonClick = (buttonName) => {
-    if (activeButton === buttonName) {
-      setActiveButton(null);
-    } else {
-      setActiveButton(null);
-      setActiveButton(buttonName);
-    }
-  };
+const FilterAndSearch = ({ toggleActiveButton, activeButton }) => {
   return (
     <>
       <div className="fs-button-container">
         <FilterButton
-          onClick={() => handleButtonClick("filter")}
+          toggleActiveButton={() => toggleActiveButton("filter")}
           isActive={activeButton === "filter"}
         />
         <SearchButton
-          onClick={() => handleButtonClick("search")}
+          toggleActiveButton={() => toggleActiveButton("search")}
           isActive={activeButton === "search"}
         />
       </div>

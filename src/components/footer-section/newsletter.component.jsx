@@ -13,8 +13,8 @@ const NewsLetter = () => {
           className="email-input"
         />
 
-        <div className="btn-container">
-          <button className="sub-btn">SUBSCRIBE</button>
+        <div className="news-btn-container">
+          <button className="news-sub-btn">SUBSCRIBE</button>
         </div>
       </div>
     </div>
