@@ -47,11 +47,14 @@ const CheckoutForm = ({ price }) => {
       console.error(error);
     } else {
       try {
-        const response = await axios.post("http://localhost:5000/charge", {
-          amount: priceInCents,
-          currency: "usd",
-          source: token.id,
-        });
+        const response = await axios.post(
+          "https://baroque-server-keme-armstrong.onrender.com/charge",
+          {
+            amount: priceInCents,
+            currency: "usd",
+            source: token.id,
+          }
+        );
 
         const data = await response.data;
 
