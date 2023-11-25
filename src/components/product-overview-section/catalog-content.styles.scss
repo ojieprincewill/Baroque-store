@@ -112,11 +112,11 @@
 
     .catalog-button-container {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
 
       .catalog-tag-btn {
         padding: 5px 10px;
-        margin: 0 7px 0 0;
+        margin: 0 0 7px 0;
       }
     }
   }

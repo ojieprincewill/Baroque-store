@@ -71,8 +71,7 @@ const HeaderSection = () => {
     backgroundSize: "cover",
     backgroundPosition: "center center",
     backgroundRepeat: "no-repeat",
-    width: "100vw",
-    maxWidth: "100%",
+    width: "100%",
     height: "100vh",
     transition: "background-image 1s ease",
     display: "flex",
@@ -85,8 +84,6 @@ const HeaderSection = () => {
   const isSmallerScreen = window.innerWidth <= tabletBreakpoint;
 
   if (window.innerWidth <= tabletBreakpoint) {
-    containerStyle.backgroundSize = "contain";
-
     return (
       <>
         <Navigation

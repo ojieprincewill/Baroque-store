@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 import "./mobile-navigation.styles.scss";
 
-const MobileNavigation = ({ handleSignOut, currentUser }) => {
+const MobileNavigation = ({ handleSignOut, currentUser, navOpen }) => {
   return (
-    <div className="mobile-pagelink-container">
+    <div className={`mobile-pagelink-container ${navOpen ? "animate" : ""}`}>
       <Link
         to="/"
         onClick={() => window.scrollTo(0, 0)}

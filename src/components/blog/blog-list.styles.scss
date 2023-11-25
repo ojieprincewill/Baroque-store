@@ -66,7 +66,6 @@
   .text {
     font-size: 16px;
     line-height: 1.5;
-    text-align: justify;
     color: #888;
     margin: 0 0 16px 0;
     padding: 0;
@@ -126,6 +125,26 @@
 }
 
 @media only screen and (max-width: 1024px) {
+  .image-container {
+    height: 200px;
+
+    .date-container {
+      top: 10px;
+      width: 50px;
+      min-height: 40px;
+      padding: 1px;
+
+      .day {
+        font-size: 20px;
+      }
+
+      .month {
+        font-size: 12px;
+        text-align: center;
+      }
+    }
+  }
+
   .blog-details {
     margin: 20px 0 10px;
 

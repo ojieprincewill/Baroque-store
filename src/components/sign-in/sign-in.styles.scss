@@ -32,6 +32,13 @@
     width: 70vw;
     padding: unset;
     margin-bottom: 25px;
+
+    .btn-flex {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
   }
 }
 

@@ -25,8 +25,6 @@
   margin: 50px 20px;
 
   .text-cont {
-    text-align: justify;
-
     .title {
       font-size: 30px;
       font-weight: 600;
@@ -126,8 +124,6 @@
   }
 
   .text-cont {
-    text-align: justify;
-
     .title {
       font-size: 30px;
       font-weight: 600;
@@ -174,6 +170,7 @@
     gap: 50px;
 
     .image-overall {
+      margin-top: 70px;
       margin-left: unset;
       width: 100%;
       height: max-content;
@@ -198,6 +195,7 @@
   gap: 50px;
 
   .image-overall-2 {
+    margin-top: 70px;
     position: relative;
     width: 100%;
     height: max-content;

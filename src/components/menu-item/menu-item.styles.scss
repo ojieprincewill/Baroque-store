@@ -1,6 +1,6 @@
 .menu-item {
   min-width: 30%;
-  height: 355px;
+  height: 360px;
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
@@ -86,6 +86,9 @@
 
 @media only screen and (max-width: 1024px) {
   .menu-item {
+    min-width: 90%;
+    margin: 0 auto 15px;
+
     .content {
       height: 90px;
       padding: 5px 25px;

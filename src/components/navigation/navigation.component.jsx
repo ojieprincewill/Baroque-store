@@ -123,6 +123,7 @@ const Navigation = ({ className }) => {
       </div>
       {navDisplay ? (
         <MobileNavigation
+          navOpen={navDisplay}
           currentUser={currentUser}
           handleSignOut={handleSignOut}
         />
