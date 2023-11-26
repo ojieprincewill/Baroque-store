@@ -17,12 +17,12 @@ const Quickview = ({ product, onClose }) => {
 
   return (
     <div className="quickview-modal">
-      <div className="close-btn-container">
-        <button className="close-button" onClick={onClose}>
-          <AiOutlineClose className="icon-close" />
-        </button>
-      </div>
       <div className="quickview-content">
+        <div className="close-btn-container">
+          <button className="close-button" onClick={onClose}>
+            <AiOutlineClose className="icon-close" />
+          </button>
+        </div>
         <div className="modal-grid">
           <div className="img-cont">
             <img

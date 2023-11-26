@@ -21,41 +21,39 @@
   z-index: 9999;
   animation: fadeIn 0.3s ease;
 
-  .close-btn-container {
-    display: flex;
-    justify-content: flex-end;
-    width: 90%;
-    margin: 0 auto;
-
-    .close-button {
-      background: transparent;
-      color: #444;
-      border: none;
-      margin: 20px 0 0 0;
-      padding: 3px;
-      cursor: pointer;
-
-      .icon-close {
-        font-size: 30px;
-
-        &:hover {
-          color: #fff;
-          transition: all 0.3s ease;
-        }
-      }
-    }
-  }
-
   .quickview-content {
     background: #fff;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 90%;
-    max-height: 85vh;
+    max-height: 90vh;
     overflow-y: auto;
-    margin: 0 auto;
+    margin: 20px auto 0;
     animation: fadeInScale 0.3s ease;
+
+    .close-btn-container {
+      display: flex;
+      justify-content: flex-start;
+      margin: 0 auto;
+
+      .close-button {
+        background: transparent;
+        color: #555;
+        border: none;
+        padding: 3px;
+        cursor: pointer;
+
+        .icon-close {
+          font-size: 30px;
+
+          &:hover {
+            color: #222;
+            transition: all 0.3s ease;
+          }
+        }
+      }
+    }
 
     .modal-grid {
       display: grid;
@@ -97,7 +95,6 @@
           font-size: 16px;
           margin: 0 0 20px 0;
           color: #666;
-          text-align: justify;
           line-height: 1.5;
         }
 
@@ -212,6 +209,13 @@
 @media only screen and (max-width: 600px) {
   .quickview-modal {
     .quickview-content {
+      .close-btn-container {
+        .close-button {
+          .icon-close {
+            font-size: 20px;
+          }
+        }
+      }
       .modal-grid {
         display: flex;
         flex-direction: column;
