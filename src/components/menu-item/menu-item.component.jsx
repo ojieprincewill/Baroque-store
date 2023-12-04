@@ -47,8 +47,9 @@ const MenuItem = ({ title, imageUrl, subTitle }) => {
     <div
       style={{
         backgroundImage: `url(${imageUrl})`,
-        backgroundSize: "cover",
+        backgroundSize: "contain",
         backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
         position: "relative",
         width: "100%",
       }}

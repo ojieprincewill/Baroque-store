@@ -25,7 +25,7 @@ const MobileNavigation = ({ handleSignOut, currentUser, navOpen }) => {
         onClick={() => window.scrollTo(0, 0)}
         className="mobile-pagelink"
       >
-        Features
+        Checkout
       </Link>
       <Link
         to="/blog"

@@ -62,7 +62,7 @@ const Navigation = ({ className }) => {
               location.pathname === "/checkout" && "active"
             }`}
           >
-            Features
+            Checkout
           </Link>
           <Link
             to="/blog"
