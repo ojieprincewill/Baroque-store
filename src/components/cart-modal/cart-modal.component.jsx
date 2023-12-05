@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 import "./cart-modal.styles.scss";
@@ -12,8 +12,27 @@ const CartModal = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const modalContentRef = useRef();
 
-  const handleCartClose = () => {
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        modalContentRef.current &&
+        !modalContentRef.current.contains(event.target)
+      ) {
+        dispatch(toggleCartDisplay());
+      }
+    };
+
+    window.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      window.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dispatch]);
+
+  const handleCartClose = (event) => {
+    event.stopPropagation();
     dispatch(toggleCartDisplay());
   };
 
@@ -24,7 +43,7 @@ const CartModal = () => {
 
   return (
     <div className="cart-sidebar-modal">
-      <div className="cart-sidebar-content">
+      <div className="cart-sidebar-content" ref={modalContentRef}>
         <div className="header-flex">
           <p className="side-title">YOUR CART</p>
           <div className="close-side-cont">
