@@ -49,7 +49,7 @@ const MobileNavigation = ({ handleSignOut, currentUser, navOpen }) => {
         Contact
       </Link>
       {currentUser ? (
-        <div className="pagelink" onClick={handleSignOut}>
+        <div className="mobile-pagelink" onClick={handleSignOut}>
           Sign Out
         </div>
       ) : (

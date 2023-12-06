@@ -21,3 +21,11 @@ a {
   text-decoration: none;
   color: black;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #7685e6;
+}
