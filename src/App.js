@@ -9,12 +9,7 @@ import AboutPage from "./pages/about-page/about-page.component";
 import SignInAndSignUp from "./pages/sign-in-and-sign-out/sign-in-and-sign-out.component";
 import CheckOutPage from "./pages/checkout-page/checkout-page.component";
 
-import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
-
-import { onSnapshot } from "firebase/firestore";
-import { onAuthStateChanged } from "firebase/auth";
-
-import { setCurrentUser } from "./features/user/userSlice";
+import { listenToAuthChanges } from "./firebase/firebase.utils";
 import { useDispatch, useSelector } from "react-redux";
 import BlogPage from "./pages/blog-page/blog-page.component";
 import ContactPage from "./pages/contact-page/contact-page.component";
@@ -25,17 +20,7 @@ function App() {
   const currentUser = useSelector((state) => state.user.currentUser);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (userAuth) => {
-      if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth);
-
-        onSnapshot(userRef, (snapShot) => {
-          dispatch(setCurrentUser({ id: snapShot.id, ...snapShot.data() }));
-        });
-      } else {
-        dispatch(setCurrentUser(userAuth));
-      }
-    });
+    const unsubscribe = listenToAuthChanges(dispatch);
 
     return () => {
       unsubscribe();

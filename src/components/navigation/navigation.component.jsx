@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { auth } from "../../firebase/firebase.utils";
 import { signOut } from "firebase/auth";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import "./navigation.styles.scss";
@@ -19,6 +19,7 @@ const Navigation = ({ className }) => {
   const isWishModalOpen = useSelector((state) => state.wishList.hidden);
   const [navDisplay, setNavDisplay] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const handleBurgerClick = () => {
     setNavDisplay(!navDisplay);
@@ -26,7 +27,8 @@ const Navigation = ({ className }) => {
 
   const handleSignOut = async () => {
     try {
-      signOut(auth);
+      await signOut(auth);
+      navigate("/");
     } catch (error) {
       console.error("Error signing out:", error.message);
     }
@@ -129,7 +131,7 @@ const Navigation = ({ className }) => {
         />
       ) : null}
       <div className="nav-placeholder"></div>
-      {isCartModalOpen ? null : <CartModal cartModalActive={isCartModalOpen} />}
+      {isCartModalOpen ? null : <CartModal />}
       {isWishModalOpen ? null : <WishModal />}
     </>
   );

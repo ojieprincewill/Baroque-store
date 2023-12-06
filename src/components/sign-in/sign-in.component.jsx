@@ -17,7 +17,7 @@ const SignIn = () => {
     const { email, password } = signedIn;
 
     try {
-      signInWithEmailAndPassword(auth, email, password);
+      await signInWithEmailAndPassword(auth, email, password);
       setSignedIn({ email: "", password: "" });
     } catch (error) {
       console.log(error);

@@ -1,6 +1,12 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import { setCartItems, resetCart } from "../features/cart/cartSlice";
+import {
+  setWishItems,
+  resetWishList,
+} from "../features/wishlist/wishListSlice";
+import { setCurrentUser } from "../features/user/userSlice";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDj_DFHHnUjaEXykFvRQjYX2HA8w737s88",
@@ -32,6 +38,8 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
       displayName,
       email,
       createdAt,
+      cart: [],
+      wishList: [],
       ...additionalData,
     };
 
@@ -43,4 +51,22 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   }
 
   return userRef;
+};
+
+export const listenToAuthChanges = (dispatch) => {
+  return onAuthStateChanged(auth, async (userAuth) => {
+    if (userAuth) {
+      const userRef = await createUserProfileDocument(userAuth);
+      const snapShot = await getDoc(userRef);
+      const cartItems = snapShot.data()?.cart || [];
+      const wishListItems = snapShot.data()?.wishList || [];
+      dispatch(setCartItems(cartItems));
+      dispatch(setWishItems(wishListItems));
+    } else {
+      dispatch(resetCart());
+      dispatch(resetWishList());
+    }
+
+    dispatch(setCurrentUser(userAuth));
+  });
 };

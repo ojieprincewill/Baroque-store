@@ -24,6 +24,16 @@
     width: 70vw;
     padding: unset;
     margin-bottom: 25px;
+
+    .btn-flex {
+      display: flex;
+      align-items: flex-start;
+      justify-content: unset;
+
+      CustomButton {
+        margin-right: 10px;
+      }
+    }
   }
 }
 

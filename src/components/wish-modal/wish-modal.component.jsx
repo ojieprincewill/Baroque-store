@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from "react";
 import "./wish-modal.styles.scss";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  clearWishList,
+  resetWishList,
   toggleWishDisplay,
 } from "../../features/wishlist/wishListSlice";
 import WishItem from "../wish-item/wish-item.component";
@@ -41,7 +41,7 @@ const WishModal = () => {
       dispatch(addItem(item));
     });
 
-    dispatch(clearWishList());
+    dispatch(resetWishList());
   };
 
   return (
