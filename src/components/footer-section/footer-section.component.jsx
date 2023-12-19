@@ -6,7 +6,6 @@ import Help from "./help.component";
 import GetInTouch from "./getintouch.component";
 import NewsLetter from "./newsletter.component";
 import CopyRight from "./copyright.component";
-import PaymentLinks from "./paymentlinks.component";
 
 const FooterSection = () => {
   return (
@@ -17,7 +16,6 @@ const FooterSection = () => {
         <GetInTouch />
         <NewsLetter />
       </div>
-      <PaymentLinks />
       <CopyRight />
     </div>
   );

@@ -15,13 +15,13 @@ const CheckoutForm = ({ price }) => {
   const cardElementOptions = {
     style: {
       base: {
-        color: "#888",
+        color: "#777",
         borderBottom: "1px solid #ccc",
         fontSize: "16px",
         iconColor: "#7685e6",
         lineHeight: "40px",
         "::placeholder": {
-          color: "#888",
+          color: "#555",
         },
       },
       invalid: {
@@ -77,9 +77,9 @@ const CheckoutForm = ({ price }) => {
     <>
       <button
         onClick={() => setShowForm((prevShowForm) => !prevShowForm)}
-        className="paymentform-button"
+        className={`paymentform-button ${showForm ? "active" : ""}`}
       >
-        {showForm ? "Close Form" : "Payment Form"}
+        {showForm ? "Close" : "Proceed with payment"}
       </button>
       {showForm && (
         <form onSubmit={handleSubmit} className="card-element-container">

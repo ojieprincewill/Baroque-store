@@ -24,9 +24,15 @@
       color: #444;
       font-size: 16px;
       border: 1px solid #bbb;
+      outline: 2px solid transparent;
       background-color: transparent;
       border-radius: 5px;
       cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:focus {
+        outline: 2px solid #7685e6;
+      }
 
       .drop-option {
         padding: 3px;
