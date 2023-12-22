@@ -67,7 +67,7 @@ const SignIn = () => {
         <div className="btn-flex">
           <CustomButton type="submit">Sign in</CustomButton>
           <CustomButton onClick={handleClick} isGoogleSignIn={true}>
-            Sign in with Google
+            Google sign in
           </CustomButton>
         </div>
       </form>
