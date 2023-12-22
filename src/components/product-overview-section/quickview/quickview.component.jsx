@@ -39,7 +39,7 @@ const Quickview = ({ product, onClose }) => {
             <div className="quantity-cont">
               <QuantityControl cartItem={cartItem} />
             </div>
-            <CartButton product={product} />
+            <CartButton product={product} onClose={onClose} />
             <div className="icon-cont">
               <div className="tooltip">
                 <div className="wl-icon">

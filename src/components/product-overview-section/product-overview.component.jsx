@@ -62,7 +62,11 @@ const ProductOverview = ({ className }) => {
   }, [dispatch]);
 
   useEffect(() => {
-    let filteredProducts = products;
+    const handleOutsideClick = () => {
+      setSearchQuery("");
+    };
+
+    let filteredProducts = [...products];
 
     if (selectedCategory && selectedCategory.toLowerCase() !== "all products") {
       filteredProducts = filteredProducts.filter(
@@ -113,6 +117,12 @@ const ProductOverview = ({ className }) => {
     }
 
     setFilteredProducts(sortedProducts);
+
+    document.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
   }, [products, selectedCategory, searchQuery, filters]);
 
   const handleSetSelectedCategory = (category) => {

@@ -1,6 +1,7 @@
 .homesection-container {
-  padding: 10px 40px;
-  margin: 20px 0;
+  padding: 10px 0;
+  width: 90%;
+  margin: 20px auto;
 
   .section-header {
     font-size: 30px;
@@ -10,14 +11,15 @@
   }
 
   .grid-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    justify-content: space-between;
   }
 }
 
 .othersection-container {
-  padding: 10px 40px;
-  margin: 20px 0;
+  padding: 10px 0;
+  width: 90%;
+  margin: 20px auto;
 
   .section-header {
     display: none;
@@ -25,8 +27,8 @@
   }
 
   .grid-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    justify-content: space-between;
   }
 }
 
@@ -39,8 +41,7 @@
 
 @media only screen and (max-width: 1024px) {
   .homesection-container {
-    padding: 10px 20px;
-    margin: 10px 0;
+    margin: 10px auto;
 
     .section-header {
       font-size: 25px;
@@ -56,8 +57,7 @@
   }
 
   .othersection-container {
-    padding: 10px 20px;
-    margin: 10px 0;
+    margin: 10px auto;
 
     .grid-container {
       display: flex;

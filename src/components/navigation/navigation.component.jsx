@@ -58,15 +58,6 @@ const Navigation = ({ className }) => {
             Shop
           </Link>
           <Link
-            to="/checkout"
-            onClick={() => window.scrollTo(0, 0)}
-            className={`pagelink ${
-              location.pathname === "/checkout" && "active"
-            }`}
-          >
-            Checkout
-          </Link>
-          <Link
             to="/blog"
             onClick={() => window.scrollTo(0, 0)}
             className={`pagelink ${

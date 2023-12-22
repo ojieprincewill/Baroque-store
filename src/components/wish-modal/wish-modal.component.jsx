@@ -70,9 +70,11 @@ const WishModal = () => {
           )}
         </div>
         <div className="footer-flex">
-          <button className="sidebar-button" onClick={handleAddAllItems}>
-            ADD ITEMS TO CART
-          </button>
+          {wishItems.length > 0 ? (
+            <button className="sidebar-button" onClick={handleAddAllItems}>
+              ADD ITEMS TO CART
+            </button>
+          ) : null}
         </div>
       </div>
     </div>

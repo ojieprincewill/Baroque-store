@@ -384,3 +384,78 @@
     }
   }
 }
+
+@media only screen and (max-width: 280px) {
+  .nav-placeholder {
+    height: unset;
+  }
+
+  .homepage-navigation,
+  .otherpages-navigation {
+    position: unset;
+    background-color: #fff;
+    display: flex;
+    height: 70px;
+    justify-content: space-between;
+
+    .logo-container {
+      .logo {
+        color: #333;
+        margin-left: 10px;
+        padding: 0 10px;
+      }
+    }
+
+    .pagelink-container {
+      display: none;
+    }
+
+    .icons-container {
+      .cartcontainer {
+        .cart-icon {
+          padding: 0 15px;
+          position: relative;
+
+          .shopping-icon {
+            font-size: 25px;
+            color: #333;
+            cursor: pointer;
+          }
+
+          .item-count {
+            top: -9px;
+            right: 10px;
+          }
+        }
+      }
+
+      .wishcontainer {
+        .hearticon {
+          padding: 0 15px;
+          position: relative;
+
+          .shopping-icon {
+            font-size: 25px;
+            color: #333;
+            cursor: pointer;
+          }
+
+          .item-count {
+            top: -9px;
+            right: 10px;
+          }
+        }
+      }
+
+      .burger-icon-cont {
+        display: flex;
+        margin: unset;
+        padding: unset;
+
+        .burger-icon {
+          margin: 0 10px;
+        }
+      }
+    }
+  }
+}

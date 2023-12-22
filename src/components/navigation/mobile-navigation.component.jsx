@@ -21,13 +21,6 @@ const MobileNavigation = ({ handleSignOut, currentUser, navOpen }) => {
         Shop
       </Link>
       <Link
-        to="/checkout"
-        onClick={() => window.scrollTo(0, 0)}
-        className="mobile-pagelink"
-      >
-        Checkout
-      </Link>
-      <Link
         to="/blog"
         onClick={() => window.scrollTo(0, 0)}
         className="mobile-pagelink"

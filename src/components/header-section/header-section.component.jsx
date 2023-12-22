@@ -9,9 +9,10 @@ const HeaderSection = () => {
 
   const images = useMemo(
     () => [
-      "https://preview.colorlib.com/theme/cozastore/images/slide-05.jpg.webp",
-      "https://preview.colorlib.com/theme/cozastore/images/slide-07.jpg.webp",
-      "https://preview.colorlib.com/theme/cozastore/images/slide-06.jpg.webp",
+      "https://cdn.pixabay.com/photo/2020/12/27/14/37/woman-5864279_1280.jpg",
+      "https://cdn.pixabay.com/photo/2015/09/01/03/42/fashion-916400_1280.jpg",
+      "https://cdn.pixabay.com/photo/2017/07/31/14/55/black-and-white-2558273_1280.jpg",
+      "https://images.unsplash.com/photo-1680200256120-8ac04eb6f01d?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ],
     []
   );

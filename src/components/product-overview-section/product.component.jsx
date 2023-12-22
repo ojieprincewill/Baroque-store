@@ -29,9 +29,7 @@ const Product = ({ product }) => {
           <p className="title">{title}</p>
           <p className="price">${price}</p>
         </div>
-        <div>
-          <WishAdd product={product} />
-        </div>
+        <WishAdd product={product} />
       </div>
       {isQuickOpen && (
         <Quickview

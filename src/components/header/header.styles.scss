@@ -11,8 +11,6 @@
     font-weight: 530;
     color: #fff;
     margin: 16px 0;
-    transform: translateX(100%);
-    animation: rollIn 1s forwards;
   }
 
   .large {
@@ -20,8 +18,6 @@
     font-weight: 750;
     margin: 0 0 20px 0;
     color: #fff;
-    transform: translateX(-100%);
-    animation: lightSpeedIn 1s forwards;
   }
 
   .btn {
@@ -36,55 +32,12 @@
       border-radius: 50px;
       color: #fff;
       transition: all 0.2s ease;
-      opacity: 0;
-      transform: translateY(100%);
-      animation: fadeIn 0.5s 1s forwards, slideUpAndRotate 1s 0.8s forwards;
     }
 
     :hover {
       background-color: #fff;
       color: #7685e6;
       cursor: pointer;
-    }
-  }
-
-  @keyframes rollIn {
-    from {
-      transform: translateX(-100%) rotate(-120deg);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0) rotate(0deg);
-      opacity: 1;
-    }
-  }
-
-  @keyframes lightSpeedIn {
-    from {
-      transform: translateX(100%) skewX(-30deg);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0) skewX(0deg);
-      opacity: 1;
-    }
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes slideUpAndRotate {
-    from {
-      transform: translateY(100%) rotate(0deg);
-    }
-    to {
-      transform: translateY(0) rotate(360deg);
     }
   }
 }

@@ -4,7 +4,7 @@ import "./check-out.styles.scss";
 
 import CheckoutItem from "../checkout-item/checkout-item.component";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 
@@ -19,12 +19,22 @@ const stripePromise = loadStripe(
 const countries = ["Uk", "USA", "Iceland"];
 
 const CheckOut = () => {
+  const navigate = useNavigate();
   const cartItems = useSelector((state) => state.cart.cartItems);
-  const cartTotal = cartItems.reduce(
-    (accumulatedQuantity, cartItem) =>
-      accumulatedQuantity + cartItem.quantity * cartItem.price,
-    0
+  const cartTotal = parseFloat(
+    cartItems
+      .reduce(
+        (accumulatedQuantity, cartItem) =>
+          accumulatedQuantity + cartItem.quantity * cartItem.price,
+        0
+      )
+      .toFixed(2)
   );
+
+  if (cartItems.length === 0) {
+    navigate("/");
+  }
+
   return (
     <>
       <div className="breadcrumbs">
@@ -66,30 +76,24 @@ const CheckOut = () => {
                 </p>
 
                 <p className="label">Calculate Shipping</p>
-                <div className="select-cont">
-                  <select
-                    id="country"
-                    defaultValue=""
-                    className="country-select"
-                  >
-                    <option value="" disabled className="country-option">
-                      Select count...
+                <select id="country" defaultValue="" className="country-select">
+                  <option value="" disabled className="country-option">
+                    Select count...
+                  </option>
+                  {countries.map((country, index) => (
+                    <option
+                      key={index}
+                      value={country}
+                      className="country-option"
+                    >
+                      {country}
                     </option>
-                    {countries.map((country, index) => (
-                      <option
-                        key={index}
-                        value={country}
-                        className="country-option"
-                      >
-                        {country}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+                  ))}
+                </select>
                 <div>
                   <input
                     type="text"
-                    placeholder="State / Country"
+                    placeholder="State / City"
                     className="ship-form-input"
                   />
                 </div>

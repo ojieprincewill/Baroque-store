@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import "./cart-modal.styles.scss";
@@ -9,10 +9,25 @@ import CartItem from "../cart-item/cart-item.component";
 
 const CartModal = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
-
+  const currentUser = useSelector((state) => state.user.currentUser);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const modalContentRef = useRef();
+  const [redirecting, setRedirecting] = useState(false);
+
+  const handleRedirect = () => {
+    if (!currentUser) {
+      setRedirecting(true);
+
+      setTimeout(() => {
+        navigate("/signin");
+        dispatch(toggleCartDisplay());
+      }, 3000);
+    } else {
+      navigate("/checkout");
+      dispatch(toggleCartDisplay());
+    }
+  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -33,11 +48,6 @@ const CartModal = () => {
 
   const handleCartClose = (event) => {
     event.stopPropagation();
-    dispatch(toggleCartDisplay());
-  };
-
-  const handleCheckoutClick = () => {
-    navigate("/checkout");
     dispatch(toggleCartDisplay());
   };
 
@@ -65,9 +75,15 @@ const CartModal = () => {
           )}
         </div>
         <div className="footer-flex">
-          <button className="sidebar-button" onClick={handleCheckoutClick}>
-            GO TO CHECKOUT
-          </button>
+          {cartItems.length > 0 ? (
+            <button
+              className="sidebar-button"
+              onClick={handleRedirect}
+              disabled={redirecting}
+            >
+              {redirecting ? "REDIRECTING..." : "GO TO CHECKOUT"}
+            </button>
+          ) : null}
         </div>
       </div>
     </div>

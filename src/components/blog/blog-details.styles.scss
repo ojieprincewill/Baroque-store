@@ -182,7 +182,7 @@
           min-height: 150px;
           padding: 20px;
           border: 1px solid #e1e1e1;
-          border-radius: 2px;
+          border-radius: 5px;
 
           &::placeholder {
             font-size: 16px;
@@ -192,11 +192,11 @@
         }
 
         .form-input {
-          width: 60%;
+          width: 100%;
           height: auto;
           padding: 20px;
           border: 1px solid #e1e1e1;
-          border-radius: 2px;
+          border-radius: 5px;
 
           &::placeholder {
             font-size: 16px;
