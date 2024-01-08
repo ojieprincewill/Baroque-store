@@ -16,6 +16,9 @@ import ContactPage from "./pages/contact-page/contact-page.component";
 import BlogDetailsPage from "./pages/blog-page/blog-details-page.component";
 import WithSpinner from "./components/with-spinner/with-spinner.component";
 import PaymentSuccess from "./pages/success-page/payment-success.component";
+import AccountPage from "./pages/account-page/account-page.component";
+import PasswordPage from "./pages/password-page/password-page.component";
+import AddressPage from "./pages/address-page/address-page.component";
 function App() {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.user.currentUser);
@@ -36,6 +39,7 @@ function App() {
   const BlogPageWithSpinner = WithSpinner(BlogPage);
   const BlogDetailsPageWithSpinner = WithSpinner(BlogDetailsPage);
   const ContactPageWithSpinner = WithSpinner(ContactPage);
+  const AccountPageWithSpinner = WithSpinner(AccountPage);
 
   return (
     <>
@@ -59,6 +63,9 @@ function App() {
         <Route path="/blog/:blogId" element={<BlogDetailsPageWithSpinner />} />
         <Route path="/contact" element={<ContactPageWithSpinner />} />
         <Route path="/success" element={<PaymentSuccess />} />
+        <Route path="/account/*" element={<AccountPageWithSpinner />} />
+        <Route path="/account/settings/password" element={<PasswordPage />} />
+        <Route path="/account/settings/address" element={<AddressPage />} />
       </Routes>
     </>
   );

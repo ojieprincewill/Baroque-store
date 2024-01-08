@@ -1,6 +1,13 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc,
+  addDoc,
+  collection,
+} from "firebase/firestore";
 import { setCartItems, resetCart } from "../features/cart/cartSlice";
 import {
   setWishItems,
@@ -60,6 +67,7 @@ export const listenToAuthChanges = (dispatch) => {
       const snapShot = await getDoc(userRef);
       const cartItems = snapShot.data()?.cart || [];
       const wishListItems = snapShot.data()?.wishList || [];
+
       dispatch(setCartItems(cartItems));
       dispatch(setWishItems(wishListItems));
     } else {
@@ -69,4 +77,24 @@ export const listenToAuthChanges = (dispatch) => {
 
     dispatch(setCurrentUser(userAuth));
   });
+};
+
+export const placeOrder = async (orderDetails) => {
+  try {
+    const { userId, products, total } = orderDetails;
+
+    const orderRef = await addDoc(collection(firestore, "orders"), {
+      userId,
+      orderNumber: `${userId}-${Date.now()}`,
+      orderDate: new Date().toISOString(),
+      products,
+      total,
+      status: "Pending",
+    });
+
+    return orderRef.id;
+  } catch (error) {
+    console.error("Error placing order:", error.message);
+    throw error;
+  }
 };

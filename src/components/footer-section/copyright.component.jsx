@@ -6,8 +6,7 @@ const CopyRight = () => {
   return (
     <div className="copyright-container">
       <p className="copyright-text">
-        Copyright &#169; 2023 - All Rights Reserved | This website is created by
-        will
+        Copyright &#169; 2023 - All Rights Reserved | Developed by will
       </p>
     </div>
   );

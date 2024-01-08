@@ -15,7 +15,7 @@ const PaymentSuccess = () => {
     }, 1000);
 
     const redirectTimeout = setTimeout(() => {
-      navigate("/");
+      navigate("/account/orders");
     }, 5000);
 
     return () => {
@@ -37,7 +37,7 @@ const PaymentSuccess = () => {
       >
         <p className="success-header">Congrats!</p>
         <p className="success-text">The payment was processed successfully</p>
-        <p className="redirect">Redirecting to home page in {countdown}s...</p>
+        <p className="redirect">Redirecting in {countdown}s...</p>
       </motion.div>
     </div>
   );

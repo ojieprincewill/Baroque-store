@@ -41,7 +41,7 @@
     overflow-y: auto;
     overflow-x: auto;
     width: 95%;
-    max-height: 81vh;
+    max-height: 71%;
 
     &::-webkit-scrollbar {
       width: 5px;
@@ -121,56 +121,6 @@
         font-size: 16px;
         font-weight: 600;
         margin: 0;
-      }
-
-      .shipping-text {
-        font-size: 16px;
-        font-weight: 500;
-        color: #888;
-        margin: 0 0 18px;
-      }
-
-      .label {
-        font-size: 16px;
-        color: #444;
-        margin: 0 0 8px;
-      }
-
-      .country-select {
-        width: 100%;
-        padding: 8px;
-        margin: 0 0 16px;
-        color: #555;
-        font-size: 15px;
-        border: 1.2px solid #bbb;
-        outline: 2px solid transparent;
-        background-color: transparent;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: all 0.2s ease;
-
-        &:focus {
-          outline: 2px solid #7685e6;
-        }
-
-        .country-option {
-          padding: 8px;
-          margin: 0 0 10px;
-          border-bottom: 1px solid #bbb;
-        }
-      }
-
-      .ship-form-input {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #bbb;
-        border-radius: 5px;
-        margin: 0 0 16px;
-
-        &::placeholder {
-          font-size: 14px;
-          color: #888;
-        }
       }
     }
     .overall-amount {

@@ -1,0 +1,76 @@
+.ship-breadcrumbs {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  justify-content: flex-start;
+  margin: 20px auto 40px;
+  padding: 10px 0;
+
+  .ship-breadlink {
+    font-size: 12px;
+    color: #333;
+    cursor: pointer;
+    padding: 0 5px;
+
+    .ship-arrow {
+      padding-left: 5px;
+    }
+
+    &:hover {
+      color: #7685e6;
+      transition: all 0.3s ease;
+    }
+  }
+
+  .ship-breadtitle {
+    font-size: 12px;
+    color: #888;
+    padding-left: 5px;
+  }
+}
+
+.current-address-cont {
+  margin: 20px auto 40px;
+  width: 80%;
+
+  .update-header {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 16px;
+    text-transform: uppercase;
+  }
+
+  .address {
+    font-size: 15px;
+    margin: 0 0 16px;
+    color: #777;
+
+    .title {
+      font-weight: bold;
+    }
+  }
+}
+
+.new-address-cont {
+  width: 80%;
+  margin: 40px auto;
+
+  .update-header {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 16px;
+    text-transform: uppercase;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .current-address-cont {
+    .address {
+      .title {
+        display: block;
+      }
+    }
+  }
+}

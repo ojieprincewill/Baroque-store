@@ -31,13 +31,7 @@ const Product = ({ product }) => {
         </div>
         <WishAdd product={product} />
       </div>
-      {isQuickOpen && (
-        <Quickview
-          product={product}
-          onClose={closeQuickView}
-          isQuickOpen={isQuickOpen}
-        />
-      )}
+      {isQuickOpen && <Quickview product={product} onClose={closeQuickView} />}
     </div>
   );
 };

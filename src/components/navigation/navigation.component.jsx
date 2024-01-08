@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
-import { auth } from "../../firebase/firebase.utils";
-import { signOut } from "firebase/auth";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import "./navigation.styles.scss";
@@ -12,26 +10,16 @@ import WishIcon from "../wishlist-icon/wish-icon.component";
 import WishModal from "../wish-modal/wish-modal.component";
 import { FiMenu, FiX } from "react-icons/fi";
 import MobileNavigation from "./mobile-navigation.component";
+import UserIcon from "../user-icon/user-icon.component";
 
 const Navigation = ({ className }) => {
-  const currentUser = useSelector((state) => state.user.currentUser);
   const isCartModalOpen = useSelector((state) => state.cart.hidden);
   const isWishModalOpen = useSelector((state) => state.wishList.hidden);
   const [navDisplay, setNavDisplay] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
 
   const handleBurgerClick = () => {
     setNavDisplay(!navDisplay);
-  };
-
-  const handleSignOut = async () => {
-    try {
-      await signOut(auth);
-      navigate("/");
-    } catch (error) {
-      console.error("Error signing out:", error.message);
-    }
   };
 
   return (
@@ -82,23 +70,11 @@ const Navigation = ({ className }) => {
           >
             Contact
           </Link>
-          {currentUser ? (
-            <div className="pagelink" onClick={handleSignOut}>
-              Sign Out
-            </div>
-          ) : (
-            <Link
-              to="/signin"
-              onClick={() => window.scrollTo(0, 0)}
-              className={`pagelink ${
-                location.pathname === "/signin" && "active"
-              }`}
-            >
-              Sign In
-            </Link>
-          )}
         </div>
         <div className="icons-container">
+          <div className="usercontainer">
+            <UserIcon />
+          </div>
           <div className="cartcontainer">
             <CartIcon />
           </div>
@@ -114,13 +90,7 @@ const Navigation = ({ className }) => {
           </div>
         </div>
       </div>
-      {navDisplay ? (
-        <MobileNavigation
-          navOpen={navDisplay}
-          currentUser={currentUser}
-          handleSignOut={handleSignOut}
-        />
-      ) : null}
+      {navDisplay ? <MobileNavigation navOpen={navDisplay} /> : null}
       <div className="nav-placeholder"></div>
       {isCartModalOpen ? null : <CartModal />}
       {isWishModalOpen ? null : <WishModal />}

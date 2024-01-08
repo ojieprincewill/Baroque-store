@@ -7,6 +7,9 @@ import cartReducer from "../features/cart/cartSlice";
 import productsReducer from "../features/products/productsSlice";
 import wishListReducer from "../features/wishlist/wishListSlice";
 import blogReducer from "../features/blog/blogSlice";
+import ordersReducer from "../features/orders/ordersSlice";
+import orderHistoryReducer from "../features/orders/orderHistorySlice";
+import accountReducer from "../features/account/accountSlice";
 
 const rootReducer = combineReducers({
   user: userReducer,
@@ -14,6 +17,9 @@ const rootReducer = combineReducers({
   products: productsReducer,
   wishList: wishListReducer,
   blog: blogReducer,
+  orders: ordersReducer,
+  orderHistory: orderHistoryReducer,
+  account: accountReducer,
 });
 
 const persistConfig = {

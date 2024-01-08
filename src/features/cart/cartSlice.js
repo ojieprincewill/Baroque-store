@@ -40,9 +40,14 @@ export const CartSlice = createSlice({
 
 const updateCartProfile = async (cartItems) => {
   const user = auth.currentUser;
+
   if (user) {
-    const userRef = doc(firestore, `users/${user.uid}`);
-    setDoc(userRef, { cart: cartItems }, { merge: true });
+    try {
+      const userRef = doc(firestore, `users/${user.uid}`);
+      setDoc(userRef, { cart: cartItems }, { merge: true });
+    } catch (error) {
+      console.error("Error updating profile", error);
+    }
   }
 };
 

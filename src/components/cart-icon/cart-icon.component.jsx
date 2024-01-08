@@ -1,5 +1,5 @@
 import React from "react";
-import { HiShoppingCart } from "react-icons/hi";
+import { MdOutlineShoppingCart } from "react-icons/md";
 
 import { toggleCartDisplay } from "../../features/cart/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,7 +18,7 @@ const CartIcon = () => {
 
   return (
     <div className="cart-icon" onClick={handleCartIconClick}>
-      <HiShoppingCart className="shopping-icon" />
+      <MdOutlineShoppingCart className="shopping-icon" />
       <div className="item-count">{itemCount}</div>
     </div>
   );

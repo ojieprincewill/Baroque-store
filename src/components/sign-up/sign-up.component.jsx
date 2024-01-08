@@ -2,10 +2,12 @@ import React, { useState } from "react";
 
 import "./sign-up.styles.scss";
 
+import { useNavigate } from "react-router-dom";
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import LoadingSpinner from "../loading-spinner/loading-spinner.component";
 
 const SignUp = () => {
   const [details, setDetails] = useState({
@@ -14,33 +16,70 @@ const SignUp = () => {
     password: "",
     confirmPassword: "",
   });
+  const [signingUp, setSigningUp] = useState(false);
+  const [passwordError, setPasswordError] = useState("");
+  const navigate = useNavigate();
+
+  const handleRedirect = () => {
+    const intendedCheckoutUrl = localStorage.getItem("intendedCheckoutUrl");
+    const intendedAccountUrl = localStorage.getItem("intendedAccountUrl");
+
+    if (intendedAccountUrl) {
+      navigate(intendedAccountUrl);
+      localStorage.removeItem("intendedAccountUrl");
+    } else if (intendedCheckoutUrl) {
+      navigate(intendedCheckoutUrl);
+      localStorage.removeItem("intendedCheckoutUrl");
+    } else {
+      navigate("/");
+    }
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     const { displayName, email, password, confirmPassword } = details;
 
+    if (password.length < 6) {
+      setPasswordError("Password must be at least 6 characters long.");
+      return;
+    }
+
     if (password !== confirmPassword) {
-      alert("Passwords do not match");
+      setPasswordError("Passwords do not match.");
       return;
     }
 
     try {
+      setSigningUp(true);
       const { user } = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
 
-      await createUserProfileDocument(user, { displayName });
+      await createUserProfileDocument(user, {
+        displayName,
+      });
+
+      await updateProfile(user, { displayName });
+
       setDetails({
         displayName: "",
         email: "",
         password: "",
         confirmPassword: "",
       });
+
+      await handleRedirect();
     } catch (error) {
-      console.error(error);
+      if (error.code === "auth/email-already-in-use") {
+        setPasswordError("User already exists. Please sign in instead.");
+      } else {
+        console.error(error);
+      }
+    } finally {
+      setSigningUp(false);
     }
   };
 
@@ -58,6 +97,7 @@ const SignUp = () => {
     <div className="sign-up-container">
       <h2 className="title">I do not have an account</h2>
       <span className="subtitle">Sign up with your email and password</span>
+      {signingUp && <LoadingSpinner />}
 
       <form onSubmit={handleSubmit}>
         <FormInput
@@ -80,8 +120,8 @@ const SignUp = () => {
           type="password"
           name="password"
           value={password}
-          onChange={handleChange}
           label="Password"
+          onChange={handleChange}
           required
         />
         <FormInput
@@ -92,6 +132,9 @@ const SignUp = () => {
           label="Confirm Password"
           required
         />
+        {passwordError && (
+          <span className="error-message">{passwordError}</span>
+        )}
         <CustomButton type="submit">SIGN UP</CustomButton>
       </form>
     </div>

@@ -9,10 +9,6 @@ import { addItem, removeItem } from "../../features/cart/cartSlice";
 const QuantityControl = ({ cartItem }) => {
   const dispatch = useDispatch();
 
-  if (!cartItem) {
-    return null;
-  }
-
   const { quantity } = cartItem;
 
   const handleAddItemClick = () => {
@@ -22,6 +18,10 @@ const QuantityControl = ({ cartItem }) => {
   const handleRemoveItemClick = () => {
     dispatch(removeItem(cartItem));
   };
+
+  if (!cartItem) {
+    return null;
+  }
 
   return (
     <div className="quantity-control">

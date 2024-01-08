@@ -1,22 +1,68 @@
-.cart-item {
+.wish-item {
   width: 100%;
   display: flex;
   align-items: flex-start;
   height: 90px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+  padding: 10px 0;
 
-  .cartimage-cont {
-    width: 30%;
-    height: auto;
+  input[type="checkbox"] {
+    display: none;
+
+    + label {
+      position: relative;
+      padding-left: 10px;
+      margin-right: 10px;
+      cursor: pointer;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 18px;
+        height: 18px;
+        border: 1px solid #ccc;
+        border-radius: 50%;
+        background-color: #fff;
+      }
+
+      &::after {
+        content: "✔";
+        position: absolute;
+        left: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 12px;
+        color: #fff;
+        display: none;
+      }
+    }
+
+    &:checked + label::before {
+      background-color: #7685e6;
+      border: 1px solid #7685e6;
+    }
+
+    &:checked + label::after {
+      display: block;
+    }
+  }
+
+  .wish-image-cont {
+    width: 100px;
+    height: 80px;
     margin: 0 20px 0 0;
+    position: relative;
 
-    .cartimage {
+    .wishimage {
       width: 100%;
       height: 100%;
       object-fit: contain;
     }
 
-    .overlay-cont {
+    .wishoverlay-cont {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -30,7 +76,7 @@
       transform: scale(0);
       transition: all 0.3s ease;
 
-      .overlay-close {
+      .wishoverlay-close {
         font-size: 16px;
         color: #e6e6e6;
         transition: all 0.3s ease;
@@ -44,7 +90,7 @@
     }
 
     &:hover {
-      .overlay-cont {
+      .wishoverlay-cont {
         transform: scale(1);
       }
     }
@@ -57,6 +103,10 @@
       font-size: 16px;
       margin: 0 0 15px 0;
       display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 180px;
     }
 
     .price {

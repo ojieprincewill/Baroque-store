@@ -4,18 +4,21 @@ import "./checkout-form.styles.scss";
 
 import { useElements, useStripe, CardElement } from "@stripe/react-stripe-js";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { resetCart } from "../../features/cart/cartSlice";
+import { placeOrder } from "../../firebase/firebase.utils";
+import { addOrder } from "../../features/orders/ordersSlice";
 
 import axios from "axios";
 
-const CheckoutForm = ({ price }) => {
+const CheckoutForm = ({ price, cartItems }) => {
   const stripe = useStripe();
   const elements = useElements();
   const priceInCents = Math.round(price * 100);
   const [showForm, setShowForm] = useState(false);
   const navigate = useNavigate();
   const [isProcessing, setProcessing] = useState(false);
+  const currentUser = useSelector((state) => state.user.currentUser);
   const dispatch = useDispatch();
 
   const cardElementOptions = {
@@ -73,6 +76,19 @@ const CheckoutForm = ({ price }) => {
 
         if (data.message === "Payment successful") {
           console.log("Payment successful");
+
+          const orderDetails = {
+            userId: currentUser.uid,
+            products: cartItems,
+            total: price,
+          };
+
+          const orderId = await placeOrder(orderDetails);
+
+          console.log("Order placed successfully with ID:", orderId);
+
+          dispatch(addOrder({ id: orderId, ...orderDetails }));
+
           navigate("/success");
 
           setTimeout(() => {

@@ -63,6 +63,40 @@
     display: flex;
     flex-direction: row;
 
+    .usercontainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+
+      .user-icon {
+        padding: 0 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        .user-display-name {
+          color: #fff;
+          text-transform: capitalize;
+          font-size: 14px;
+          margin: 0 10px 0 0;
+          font-weight: 500;
+        }
+
+        .shopping-icon {
+          font-size: 20px;
+          color: #e6e6e6;
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          &:hover {
+            color: #7685e6;
+          }
+        }
+      }
+    }
+
     .cartcontainer {
       display: flex;
       align-items: center;
@@ -77,10 +111,10 @@
           font-size: 25px;
           color: #e6e6e6;
           cursor: pointer;
+          transition: all 0.3s ease;
 
           &:hover {
             color: #7685e6;
-            transition: all 0.3s ease;
           }
         }
 
@@ -111,13 +145,13 @@
         position: relative;
 
         .shopping-icon {
-          font-size: 25px;
+          font-size: 20px;
           color: #e6e6e6;
           cursor: pointer;
+          transition: all 0.3s ease;
 
           &:hover {
             color: #7685e6;
-            transition: all 0.3s ease;
           }
         }
 
@@ -142,11 +176,11 @@
       display: none;
       justify-content: center;
       align-items: center;
-      padding: 0 15px;
+      padding: 0 10px;
       margin-right: 10px;
 
       .burger-icon {
-        font-size: 25px;
+        font-size: 20px;
         color: #333;
         cursor: pointer;
       }
@@ -217,6 +251,41 @@
     display: flex;
     flex-direction: row;
 
+    .usercontainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+
+      .user-icon {
+        padding: 0 30px;
+        margin: 0 0 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        .user-display-name {
+          color: #333;
+          text-transform: capitalize;
+          font-size: 14px;
+          font-weight: 500;
+          margin: 0 10px 0 0;
+        }
+
+        .shopping-icon {
+          font-size: 20px;
+          color: #333;
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          &:hover {
+            color: #7685e6;
+          }
+        }
+      }
+    }
+
     .cartcontainer {
       display: flex;
       align-items: center;
@@ -231,10 +300,10 @@
           font-size: 25px;
           color: #333;
           cursor: pointer;
+          transition: all 0.3s ease;
 
           &:hover {
             color: #7685e6;
-            transition: all 0.3s ease;
           }
         }
 
@@ -264,13 +333,13 @@
         position: relative;
 
         .shopping-icon {
-          font-size: 25px;
+          font-size: 20px;
           color: #333;
           cursor: pointer;
+          transition: all 0.3s ease;
 
           &:hover {
             color: #7685e6;
-            transition: all 0.3s ease;
           }
         }
 
@@ -295,11 +364,11 @@
       display: none;
       justify-content: center;
       align-items: center;
-      padding: 0 15px;
+      padding: 0 10px;
       margin-right: 10px;
 
       .burger-icon {
-        font-size: 25px;
+        font-size: 20px;
         color: #333;
         cursor: pointer;
 
@@ -316,7 +385,7 @@
   height: 90px;
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
   .nav-placeholder {
     height: unset;
   }
@@ -342,6 +411,28 @@
     }
 
     .icons-container {
+      align-items: center;
+
+      .usercontainer {
+        .user-icon {
+          padding: 0 15px;
+
+          .user-display-name {
+            color: #333;
+            text-transform: capitalize;
+            font-size: 14px;
+            font-weight: 500;
+            margin: 0 10px 0 0;
+          }
+
+          .shopping-icon {
+            font-size: 20px;
+            color: #333;
+            cursor: pointer;
+          }
+        }
+      }
+
       .cartcontainer {
         .cart-icon {
           padding: 0 15px;
@@ -380,6 +471,98 @@
 
       .burger-icon-cont {
         display: flex;
+        padding: 0 15px;
+
+        .burger-icon {
+          font-size: 25px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .nav-placeholder {
+    height: unset;
+  }
+
+  .homepage-navigation,
+  .otherpages-navigation {
+    position: unset;
+    background-color: #fff;
+    display: flex;
+    height: 70px;
+    justify-content: space-between;
+
+    .logo-container {
+      .logo {
+        color: #333;
+        margin-left: 10px;
+        padding: 0 10px;
+      }
+    }
+
+    .pagelink-container {
+      display: none;
+    }
+
+    .icons-container {
+      .usercontainer {
+        display: none;
+        .user-icon {
+          padding: unset;
+
+          .shopping-icon {
+            font-size: 25px;
+            color: #333;
+            cursor: pointer;
+          }
+        }
+      }
+
+      .cartcontainer {
+        .cart-icon {
+          padding: 0 15px;
+          position: relative;
+
+          .shopping-icon {
+            font-size: 22px;
+            color: #333;
+            cursor: pointer;
+          }
+
+          .item-count {
+            top: -9px;
+            right: 7px;
+          }
+        }
+      }
+
+      .wishcontainer {
+        .hearticon {
+          padding: 0 15px;
+          position: relative;
+
+          .shopping-icon {
+            font-size: 20px;
+            color: #333;
+            cursor: pointer;
+          }
+
+          .item-count {
+            top: -9px;
+            right: 7px;
+          }
+        }
+      }
+
+      .burger-icon-cont {
+        display: flex;
+        padding: 0 15px;
+
+        .burger-icon {
+          font-size: 25px;
+        }
       }
     }
   }
@@ -411,38 +594,51 @@
     }
 
     .icons-container {
-      .cartcontainer {
-        .cart-icon {
+      .usercontainer {
+        display: none;
+        .user-icon {
           padding: 0 15px;
-          position: relative;
 
           .shopping-icon {
             font-size: 25px;
             color: #333;
             cursor: pointer;
           }
+        }
+      }
+
+      .cartcontainer {
+        .cart-icon {
+          padding: 0 10px;
+          position: relative;
+
+          .shopping-icon {
+            font-size: 22px;
+            color: #333;
+            cursor: pointer;
+          }
 
           .item-count {
             top: -9px;
-            right: 10px;
+            right: 3px;
           }
         }
       }
 
       .wishcontainer {
         .hearticon {
-          padding: 0 15px;
+          padding: 0 10px;
           position: relative;
 
           .shopping-icon {
-            font-size: 25px;
+            font-size: 20px;
             color: #333;
             cursor: pointer;
           }
 
           .item-count {
             top: -9px;
-            right: 10px;
+            right: 3px;
           }
         }
       }

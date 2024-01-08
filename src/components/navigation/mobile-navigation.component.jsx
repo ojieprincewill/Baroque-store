@@ -1,9 +1,36 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import "./mobile-navigation.styles.scss";
 
-const MobileNavigation = ({ handleSignOut, currentUser, navOpen }) => {
+import { useSelector } from "react-redux";
+import { auth } from "../../firebase/firebase.utils";
+import { signOut } from "firebase/auth";
+
+const MobileNavigation = ({ navOpen }) => {
+  const currentUser = useSelector((state) => state.user.currentUser);
+  const navigate = useNavigate();
+
+  const isPhoneScreen = window.innerWidth <= 600;
+
+  const handleAccountLink = () => {
+    if (!currentUser) {
+      localStorage.setItem("intendedAccountUrl", "/account");
+      navigate("/signin");
+    } else {
+      navigate("/account");
+    }
+  };
+
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+      navigate("/");
+    } catch (error) {
+      console.error("Error signing out:", error.message);
+    }
+  };
+
   return (
     <div className={`mobile-pagelink-container ${navOpen ? "animate" : ""}`}>
       <Link
@@ -41,18 +68,25 @@ const MobileNavigation = ({ handleSignOut, currentUser, navOpen }) => {
       >
         Contact
       </Link>
-      {currentUser ? (
-        <div className="mobile-pagelink" onClick={handleSignOut}>
-          Sign Out
-        </div>
-      ) : (
-        <Link
-          to="/signin"
-          onClick={() => window.scrollTo(0, 0)}
-          className="mobile-pagelink"
-        >
-          Sign In
-        </Link>
+      {isPhoneScreen &&
+        (currentUser ? (
+          <span className="mobile-pagelink" onClick={handleSignOut}>
+            Sign out
+          </span>
+        ) : (
+          <Link
+            to="/signin"
+            onClick={() => window.scrollTo(0, 0)}
+            className="mobile-pagelink"
+          >
+            Sign in
+          </Link>
+        ))}
+
+      {isPhoneScreen && (
+        <span className="mobile-pagelink" onClick={handleAccountLink}>
+          my account
+        </span>
       )}
     </div>
   );

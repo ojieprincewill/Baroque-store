@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { BiLogoFacebook } from "react-icons/bi";
 import { BiLogoTwitter } from "react-icons/bi";
@@ -9,11 +9,42 @@ import SizeAndColor from "./sizeandcolorselection.component";
 import CartButton from "./cart-button.component";
 import WishAdd from "../../wish-add-icon/wish-add-icon.component";
 import QuantityControl from "../../quantity-control/quantity-control.component";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import QuickButtons from "../../quick-buttons/quick-buttons.component";
+import { addItem } from "../../../features/cart/cartSlice";
+import { useNavigate } from "react-router-dom";
 
 const Quickview = ({ product, onClose }) => {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const cartItem = cartItems.find((cartItem) => cartItem.id === product.id);
+  const currentUser = useSelector((state) => state.user.currentUser);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [showAddToCartButton, setShowAddToCartButton] = useState(!cartItem);
+
+  useEffect(() => {
+    setShowAddToCartButton(!cartItem);
+  }, [cartItem]);
+
+  const handleAddToCart = () => {
+    dispatch(addItem(product));
+    setShowAddToCartButton(false);
+  };
+
+  const handleContinueShopping = () => {
+    onClose();
+    setShowAddToCartButton(true);
+  };
+
+  const handleGoToCheckout = () => {
+    if (!currentUser) {
+      localStorage.setItem("intendedCheckoutUrl", "/checkout");
+      navigate("/signin");
+    } else {
+      navigate("/checkout");
+    }
+  };
 
   return (
     <div className="quickview-modal">
@@ -37,9 +68,17 @@ const Quickview = ({ product, onClose }) => {
             <p className="modal-text">{product.description}</p>
             <SizeAndColor />
             <div className="quantity-cont">
-              <QuantityControl cartItem={cartItem} />
+              {cartItem && <QuantityControl cartItem={cartItem} />}
             </div>
-            <CartButton product={product} onClose={onClose} />
+            {showAddToCartButton && (
+              <CartButton onAddToCart={handleAddToCart} />
+            )}{" "}
+            {!showAddToCartButton && (
+              <QuickButtons
+                handleContinueShopping={handleContinueShopping}
+                handleGoToCheckout={handleGoToCheckout}
+              />
+            )}
             <div className="icon-cont">
               <div className="tooltip">
                 <div className="wl-icon">

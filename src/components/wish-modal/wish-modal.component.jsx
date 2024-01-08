@@ -1,18 +1,17 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import "./wish-modal.styles.scss";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  resetWishList,
-  toggleWishDisplay,
-} from "../../features/wishlist/wishListSlice";
+import { toggleWishDisplay } from "../../features/wishlist/wishListSlice";
 import WishItem from "../wish-item/wish-item.component";
 import { addItem } from "../../features/cart/cartSlice";
+import { removeWishItem } from "../../features/wishlist/wishListSlice";
 
 const WishModal = () => {
   const wishItems = useSelector((state) => state.wishList.wishItems);
   const dispatch = useDispatch();
   const modalContentRef = useRef();
+  const [selectedItems, setSelectedItems] = useState([]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -36,12 +35,27 @@ const WishModal = () => {
     dispatch(toggleWishDisplay());
   };
 
-  const handleAddAllItems = () => {
-    wishItems.forEach((item) => {
+  const handleSelectItem = (itemId, isSelected) => {
+    if (isSelected) {
+      setSelectedItems((prevSelectedItems) => [...prevSelectedItems, itemId]);
+    } else {
+      setSelectedItems((prevSelectedItems) =>
+        prevSelectedItems.filter((id) => id !== itemId)
+      );
+    }
+  };
+
+  const handleAddSelectedItems = () => {
+    const itemsToAdd = wishItems.filter((item) =>
+      selectedItems.includes(item.id)
+    );
+
+    itemsToAdd.forEach((item) => {
       dispatch(addItem(item));
+      dispatch(removeWishItem(item));
     });
 
-    dispatch(resetWishList());
+    setSelectedItems([]);
   };
 
   return (
@@ -60,7 +74,11 @@ const WishModal = () => {
           {wishItems.length ? (
             <div className="cart-items">
               {wishItems.map((wishItem) => (
-                <WishItem key={wishItem.id} products={wishItem} />
+                <WishItem
+                  key={wishItem.id}
+                  product={wishItem}
+                  onSelect={handleSelectItem}
+                />
               ))}
             </div>
           ) : (
@@ -71,9 +89,14 @@ const WishModal = () => {
         </div>
         <div className="footer-flex">
           {wishItems.length > 0 ? (
-            <button className="sidebar-button" onClick={handleAddAllItems}>
-              ADD ITEMS TO CART
-            </button>
+            <div>
+              <button
+                className="sidebar-button"
+                onClick={handleAddSelectedItems}
+              >
+                ADD ITEMS TO CART
+              </button>
+            </div>
           ) : null}
         </div>
       </div>

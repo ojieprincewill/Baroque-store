@@ -8,7 +8,6 @@
     opacity: 1;
   }
 }
-
 .mobile-pagelink-container {
   display: none;
   flex-direction: column;
@@ -19,6 +18,7 @@
   transition: max-height 0.5s ease-in-out, opacity 1s ease-in-out;
 
   .mobile-pagelink {
+    text-transform: capitalize;
     padding: 8px 20px;
     margin: 0;
     color: #fff;

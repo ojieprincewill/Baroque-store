@@ -11,12 +11,11 @@ import { useSelector } from "react-redux";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../stripe/checkout-form.component";
+import ShippingForm from "../shipping/shipping-form.component";
 
 const stripePromise = loadStripe(
   "pk_test_51O6ui2KExLrHckCXzO8uYY7G6ZyeigHXwxWm9D3FMBcIOo4lR9vnjd0UbE4hGTpkQk1wJBq3locknZmD3rmttD1s0046a8QhkV"
 );
-
-const countries = ["Uk", "USA", "Iceland"];
 
 const CheckOut = () => {
   const navigate = useNavigate();
@@ -69,49 +68,14 @@ const CheckOut = () => {
           <div>
             <div className="shipping-details-cont">
               <p className="subtitle">Shipping:</p>
-              <div>
-                <p className="shipping-text">
-                  There are no shipping methods available. Please double check
-                  your address, or contact us if you need any help.
-                </p>
-
-                <p className="label">Calculate Shipping</p>
-                <select id="country" defaultValue="" className="country-select">
-                  <option value="" disabled className="country-option">
-                    Select count...
-                  </option>
-                  {countries.map((country, index) => (
-                    <option
-                      key={index}
-                      value={country}
-                      className="country-option"
-                    >
-                      {country}
-                    </option>
-                  ))}
-                </select>
-                <div>
-                  <input
-                    type="text"
-                    placeholder="State / City"
-                    className="ship-form-input"
-                  />
-                </div>
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Postcode / Zip"
-                    className="ship-form-input"
-                  />
-                </div>
-              </div>
+              <ShippingForm />
             </div>
             <div className="overall-amount">
               <p className="sub-title">Total:</p>
               <p className="total">${cartTotal}</p>
             </div>
             <Elements stripe={stripePromise}>
-              <CheckoutForm price={cartTotal} />
+              <CheckoutForm price={cartTotal} cartItems={cartItems} />
             </Elements>
           </div>
         </div>
