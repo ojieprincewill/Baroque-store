@@ -11,6 +11,7 @@ export const updateNewShippingAddress = createAsyncThunk(
         shippingAddress: { ...newShippingAddress },
       });
 
+      console.log("shipping address", newShippingAddress);
       return newShippingAddress;
     } catch (error) {
       throw new Error("Error updating shipping address in Firestore");
@@ -31,6 +32,7 @@ export const userSlice = createSlice({
       state.currentUser = action.payload;
     },
     updateShippingAddress: (state, action) => {
+      console.log("action", action.payload);
       state.shippingAddress = action.payload;
     },
   },

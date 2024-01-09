@@ -19,22 +19,22 @@ const BlogDetails = () => {
 
   return (
     <>
-      <div className="breadcrumbs">
+      <div className="blog-breadcrumbs">
         <Link
           to="/"
           onClick={() => window.scrollTo(0, 0)}
-          className="breadlink"
+          className="blog-breadlink"
         >
-          Home <span className="arrow">{">"}</span>
+          Home <span className="blog-arrow">{">"}</span>
         </Link>{" "}
         <Link
           to="/blog"
           onClick={() => window.scrollTo(0, 0)}
-          className="breadlink"
+          className="blog-breadlink"
         >
-          Blog <span className="arrow">{">"}</span>
+          Blog <span className="blog-arrow">{">"}</span>
         </Link>
-        <span className="breadtitle">{selectedBlog.title}</span>
+        <span className="blog-breadtitle">{selectedBlog.title}</span>
       </div>
       <div className="details-grid">
         <div>

@@ -1,17 +1,17 @@
-.breadcrumbs {
+.checkout-breadcrumbs {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   margin: 20px 10px;
   padding: 10px 50px;
 
-  .breadlink {
+  .checkout-breadlink {
     font-size: 12px;
     color: #333;
     cursor: pointer;
     padding: 0 5px;
 
-    .arrow {
+    .checkout-arrow {
       padding-left: 5px;
     }
 
@@ -21,7 +21,7 @@
     }
   }
 
-  .breadtitle {
+  .checkout-breadtitle {
     font-size: 12px;
     color: #888;
     padding-left: 5px;

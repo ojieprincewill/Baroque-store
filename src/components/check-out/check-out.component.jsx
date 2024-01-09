@@ -36,15 +36,15 @@ const CheckOut = () => {
 
   return (
     <>
-      <div className="breadcrumbs">
+      <div className="checkout-breadcrumbs">
         <Link
           to="/"
           onClick={() => window.scrollTo(0, 0)}
-          className="breadlink"
+          className="checkout-breadlink"
         >
-          Home <span className="arrow">{">"}</span>
+          Home <span className="checkout-arrow">{">"}</span>
         </Link>{" "}
-        <span className="breadtitle">Checkout</span>
+        <span className="checkout-breadtitle">Checkout</span>
       </div>
       <div className="checkout">
         <div className="checkout-wrapper">

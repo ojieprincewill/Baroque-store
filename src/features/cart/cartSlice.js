@@ -35,6 +35,12 @@ export const CartSlice = createSlice({
     resetCart: (state) => {
       state.cartItems = [];
     },
+    mergeCarts: (state) => {
+      const localCartItems =
+        JSON.parse(localStorage.getItem("guestCart")) || [];
+      state.cartItems = [...state.cartItems, ...localCartItems];
+      localStorage.removeItem("guestCart");
+    },
   },
 });
 
@@ -58,5 +64,6 @@ export const {
   removeItem,
   setCartItems,
   resetCart,
+  mergeCarts,
 } = CartSlice.actions;
 export default CartSlice.reducer;

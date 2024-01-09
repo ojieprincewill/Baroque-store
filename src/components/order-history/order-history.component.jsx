@@ -38,34 +38,33 @@ const OrderHistory = () => {
       {orderHistory.length === 0 && (
         <p className="empty-message">No orders yet.</p>
       )}
-      {orderHistoryStatus === "success" && (
-        <>
-          <div className="order-header-cont">
-            <span className="order-header">Order Number</span>
-            <span className="order-header">Order Date</span>
-            <span className="order-header">Total</span>
-            <span className="order-header">Status</span>
-            <span className="order-header">Actions</span>
+
+      <>
+        <div className="order-header-cont">
+          <span className="order-header">Order Number</span>
+          <span className="order-header">Order Date</span>
+          <span className="order-header">Total</span>
+          <span className="order-header">Status</span>
+          <span className="order-header">Actions</span>
+        </div>
+        {orderHistory.map((order) => (
+          <div className="order-detail-cont" key={order.id}>
+            <span className="order-text">{order.orderNumber}</span>
+            <span className="order-text">{order.orderDate}</span>
+            <span className="order-text">${order.total}</span>
+            <span className="order-text">{order.status}</span>
+            <span className="order-text">
+              <button
+                className="detail-button"
+                onClick={() => handleViewDetails(order)}
+              >
+                View Details
+              </button>
+            </span>
           </div>
-          {orderHistory.map((order) => (
-            <div className="order-detail-cont" key={order.id}>
-              <span className="order-text">{order.orderNumber}</span>
-              <span className="order-text">{order.orderDate}</span>
-              <span className="order-text">${order.total}</span>
-              <span className="order-text">{order.status}</span>
-              <span className="order-text">
-                <button
-                  className="detail-button"
-                  onClick={() => handleViewDetails(order)}
-                >
-                  View Details
-                </button>
-              </span>
-            </div>
-          ))}
-          {isDetailOpen && <OrderDetails closeDetails={handleDetailsClose} />}
-        </>
-      )}
+        ))}
+        {isDetailOpen && <OrderDetails closeDetails={handleDetailsClose} />}
+      </>
     </div>
   );
 };

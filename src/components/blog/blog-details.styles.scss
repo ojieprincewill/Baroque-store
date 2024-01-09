@@ -1,17 +1,17 @@
-.breadcrumbs {
+.blog-breadcrumbs {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   margin: 20px 10px;
   padding: 10px 50px;
 
-  .breadlink {
+  .blog-breadlink {
     font-size: 12px;
     color: #333;
     cursor: pointer;
     padding: 0 5px;
 
-    .arrow {
+    .blog-arrow {
       padding-left: 5px;
     }
 
@@ -21,7 +21,7 @@
     }
   }
 
-  .breadtitle {
+  .blog-breadtitle {
     font-size: 12px;
     color: #888;
     padding-left: 5px;

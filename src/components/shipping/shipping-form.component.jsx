@@ -38,6 +38,7 @@ const ShippingForm = () => {
       await updateDoc(userDocRef, {
         shippingAddress: { ...localShippingAddress },
       });
+      console.log("local shipping", localShippingAddress);
       dispatch(updateShippingAddress(localShippingAddress));
       alert("Shipping address updated successfully!");
     } catch (error) {

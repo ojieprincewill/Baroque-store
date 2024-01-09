@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 const AddressBook = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
   const shippingAddress = useSelector((state) => state.user.shippingAddress);
+  console.log("Shipping Address in AddressBook:", shippingAddress);
 
   return (
     <div className="address-book">
