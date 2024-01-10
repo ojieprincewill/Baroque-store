@@ -32,7 +32,6 @@ export const userSlice = createSlice({
       state.currentUser = action.payload;
     },
     updateShippingAddress: (state, action) => {
-      console.log("action", action.payload);
       state.shippingAddress = action.payload;
     },
   },

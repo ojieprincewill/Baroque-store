@@ -46,9 +46,7 @@ const AccountMaster = () => {
     []
   );
 
-  const [selectedOption, setSelectedOption] = useState(
-    parseInt(localStorage.getItem("selectedOptionIndex"), 10) || 0
-  );
+  const [selectedOption, setSelectedOption] = useState(0);
 
   const navigate = useNavigate();
 
@@ -67,14 +65,24 @@ const AccountMaster = () => {
 
   useEffect(() => {
     const currentOption = options[selectedOption];
-    if (currentOption) {
+
+    if (
+      !window.location.pathname.includes("/account/") &&
+      !selectedOption &&
+      currentOption
+    ) {
+      setSelectedOption(0);
       navigate(`/account/${currentOption.path}`);
+    } else {
+      const newSelectedOption = options.findIndex((option) =>
+        window.location.pathname.includes(option.path)
+      );
+
+      if (newSelectedOption !== -1) {
+        setSelectedOption(newSelectedOption);
+      }
     }
   }, [selectedOption, options, navigate]);
-
-  useEffect(() => {
-    localStorage.setItem("selectedOptionIndex", selectedOption);
-  }, [selectedOption]);
 
   if (isPhoneScreen) {
     const handleOptionClick = (option) => {

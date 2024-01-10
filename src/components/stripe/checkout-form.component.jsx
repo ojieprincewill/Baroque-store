@@ -85,8 +85,6 @@ const CheckoutForm = ({ price, cartItems }) => {
 
           const orderId = await placeOrder(orderDetails);
 
-          console.log("Order placed successfully with ID:", orderId);
-
           dispatch(addOrder({ id: orderId, ...orderDetails }));
 
           navigate("/success");
@@ -100,6 +98,7 @@ const CheckoutForm = ({ price, cartItems }) => {
         }
       } catch (error) {
         console.log("Payment error: ", error);
+        alert("There was an issue with your payment! Please try again.");
       } finally {
         setProcessing(false);
       }

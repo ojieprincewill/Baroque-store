@@ -7,10 +7,14 @@ import { useDispatch, useSelector } from "react-redux";
 const CartIcon = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems);
-  const itemCount = cartItems.reduce(
-    (accumulatedQuantity, cartItem) => accumulatedQuantity + cartItem.quantity,
-    0
-  );
+  const itemCount =
+    Array.isArray(cartItems) && cartItems.length > 0
+      ? cartItems.reduce(
+          (accumulatedQuantity, cartItem) =>
+            accumulatedQuantity + cartItem.quantity,
+          0
+        )
+      : 0;
 
   const handleCartIconClick = () => {
     dispatch(toggleCartDisplay());

@@ -2,7 +2,6 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { createLogger } from "redux-logger";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import guestMiddleware from "../middlewares/guest-middleware";
 
 import userReducer from "../features/user/userSlice";
 import cartReducer from "../features/cart/cartSlice";
@@ -31,8 +30,6 @@ const persistConfig = {
 };
 
 let middlewares = [];
-
-middlewares.push(guestMiddleware);
 
 if (process.env.NODE_ENV === "development") {
   const logger = createLogger();

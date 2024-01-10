@@ -112,8 +112,8 @@
 
     .shipping-details-cont {
       display: flex;
+      flex-direction: column;
       justify-content: flex-start;
-      gap: 20px;
       padding: 0 0 10px;
       border-bottom: 1px dashed #bbb;
 

@@ -8,7 +8,7 @@ import { addItem } from "../../features/cart/cartSlice";
 import { removeWishItem } from "../../features/wishlist/wishListSlice";
 
 const WishModal = () => {
-  const wishItems = useSelector((state) => state.wishList.wishItems);
+  const wishItems = useSelector((state) => state.wishList.wishListItems);
   const dispatch = useDispatch();
   const modalContentRef = useRef();
   const [selectedItems, setSelectedItems] = useState([]);

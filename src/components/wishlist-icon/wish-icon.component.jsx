@@ -5,11 +5,15 @@ import { toggleWishDisplay } from "../../features/wishlist/wishListSlice";
 
 const WishIcon = () => {
   const dispatch = useDispatch();
-  const wishItems = useSelector((state) => state.wishList.wishItems);
-  const wishCount = wishItems.reduce(
-    (accumulatedQuantity, wishItem) => accumulatedQuantity + wishItem.quantity,
-    0
-  );
+  const wishItems = useSelector((state) => state.wishList.wishListItems);
+  const wishCount =
+    Array.isArray(wishItems) && wishItems.length > 0
+      ? wishItems.reduce(
+          (accumulatedQuantity, wishItem) =>
+            accumulatedQuantity + wishItem.quantity,
+          0
+        )
+      : 0;
 
   const handleWishIconClick = () => {
     dispatch(toggleWishDisplay());

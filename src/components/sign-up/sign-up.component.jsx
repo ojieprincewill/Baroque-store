@@ -17,7 +17,7 @@ const SignUp = () => {
     confirmPassword: "",
   });
   const [signingUp, setSigningUp] = useState(false);
-  const [passwordError, setPasswordError] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleRedirect = () => {
@@ -41,12 +41,12 @@ const SignUp = () => {
     const { displayName, email, password, confirmPassword } = details;
 
     if (password.length < 6) {
-      setPasswordError("Password must be at least 6 characters long.");
+      setError("Password must be at least 6 characters long.");
       return;
     }
 
     if (password !== confirmPassword) {
-      setPasswordError("Passwords do not match.");
+      setError("Passwords do not match.");
       return;
     }
 
@@ -73,10 +73,14 @@ const SignUp = () => {
 
       await handleRedirect();
     } catch (error) {
+      console.error(error);
+
       if (error.code === "auth/email-already-in-use") {
-        setPasswordError("User already exists. Please sign in instead.");
+        setError("User already exists. Please sign in instead.");
+      } else if (error.code === "auth/network-request-failed") {
+        setError("Network error. Please check your internet connection.");
       } else {
-        console.error(error);
+        setError("An error occurred during sign-up. Please try again.");
       }
     } finally {
       setSigningUp(false);
@@ -132,9 +136,7 @@ const SignUp = () => {
           label="Confirm Password"
           required
         />
-        {passwordError && (
-          <span className="error-message">{passwordError}</span>
-        )}
+        {error && <span className="error-message">{error}</span>}
         <CustomButton type="submit">SIGN UP</CustomButton>
       </form>
     </div>

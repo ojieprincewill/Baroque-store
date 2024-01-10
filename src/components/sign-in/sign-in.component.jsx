@@ -45,8 +45,12 @@ const SignIn = () => {
 
       await handleRedirect();
     } catch (error) {
-      console.log(error);
-      setSignInError("Invalid email or password. Please try again.");
+      console.error(error);
+      if (error.code === "auth/network-request-failed") {
+        setSignInError("Network error. Please check your internet connection.");
+      } else {
+        setSignInError("Invalid email or password. Please try again.");
+      }
       setSignedIn({ ...signedIn, password: "" });
     } finally {
       setLoggingIn(false);

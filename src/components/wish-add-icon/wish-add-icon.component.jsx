@@ -4,15 +4,21 @@ import "./wish-add-icon.styles.scss";
 
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleWishItems } from "../../features/wishlist/wishListSlice";
+import { toggleWishListItems } from "../../features/wishlist/wishListSlice";
+import { updateLocalWishlistStorage } from "../../features/wishlist/wishListSlice";
 
 const WishAdd = ({ product }) => {
   const dispatch = useDispatch();
-  const wishItems = useSelector((state) => state.wishList.wishItems);
+  const currentUser = useSelector((state) => state.user.currentUser);
+  const wishItems = useSelector((state) => state.wishList.wishListItems);
   const isItemInWishList = wishItems.some((item) => item.id === product.id);
 
   const handleToggleWishItemClick = () => {
-    dispatch(toggleWishItems(product));
+    if (!currentUser) {
+      updateLocalWishlistStorage([...wishItems, product]);
+    }
+
+    dispatch(toggleWishListItems(product));
   };
   return (
     <div

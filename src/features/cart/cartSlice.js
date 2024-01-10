@@ -17,34 +17,45 @@ export const CartSlice = createSlice({
     },
     addItem: (state, action) => {
       state.cartItems = addItemToCart(state.cartItems, action.payload);
-      updateCartProfile(state.cartItems);
+      updateUserCartProfile(state.cartItems);
+      updateLocalCartStorage(state.cartItems);
     },
     removeItem: (state, action) => {
       state.cartItems = removeItemFromCart(state.cartItems, action.payload);
-      updateCartProfile(state.cartItems);
+      updateUserCartProfile(state.cartItems);
+      updateLocalCartStorage(state.cartItems);
     },
     clearItem: (state, action) => {
       state.cartItems = state.cartItems.filter(
         (item) => item.id !== action.payload.id
       );
-      updateCartProfile(state.cartItems);
+      updateUserCartProfile(state.cartItems);
     },
     setCartItems: (state, action) => {
       state.cartItems = action.payload;
+      updateUserCartProfile(state.cartItems);
     },
     resetCart: (state) => {
       state.cartItems = [];
+      updateUserCartProfile(state.cartItems);
+      updateLocalCartStorage(state.cartItems);
     },
     mergeCarts: (state) => {
       const localCartItems =
         JSON.parse(localStorage.getItem("guestCart")) || [];
-      state.cartItems = [...state.cartItems, ...localCartItems];
+
+      const existingCartItems = Array.isArray(state.cartItems)
+        ? state.cartItems
+        : [];
+
+      state.cartItems = [...existingCartItems, ...localCartItems];
+      updateUserCartProfile(state.cartItems);
       localStorage.removeItem("guestCart");
     },
   },
 });
 
-const updateCartProfile = async (cartItems) => {
+export const updateUserCartProfile = async (cartItems) => {
   const user = auth.currentUser;
 
   if (user) {
@@ -55,6 +66,10 @@ const updateCartProfile = async (cartItems) => {
       console.error("Error updating profile", error);
     }
   }
+};
+
+export const updateLocalCartStorage = (cartItems) => {
+  localStorage.setItem("guestCart", JSON.stringify(cartItems));
 };
 
 export const {

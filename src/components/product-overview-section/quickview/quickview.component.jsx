@@ -13,6 +13,7 @@ import { useSelector, useDispatch } from "react-redux";
 import QuickButtons from "../../quick-buttons/quick-buttons.component";
 import { addItem } from "../../../features/cart/cartSlice";
 import { useNavigate } from "react-router-dom";
+import { updateLocalCartStorage } from "../../../features/cart/cartSlice";
 
 const Quickview = ({ product, onClose }) => {
   const cartItems = useSelector((state) => state.cart.cartItems);
@@ -28,6 +29,9 @@ const Quickview = ({ product, onClose }) => {
   }, [cartItem]);
 
   const handleAddToCart = () => {
+    if (!currentUser) {
+      updateLocalCartStorage([...cartItems, product]);
+    }
     dispatch(addItem(product));
     setShowAddToCartButton(false);
   };

@@ -10,13 +10,15 @@ import {
 } from "firebase/firestore";
 import { setCartItems, resetCart } from "../features/cart/cartSlice";
 import {
-  setWishItems,
+  setWishListItems,
   resetWishList,
+  mergeWishlists,
 } from "../features/wishlist/wishListSlice";
 import {
   setCurrentUser,
   updateShippingAddress,
 } from "../features/user/userSlice";
+import { mergeCarts } from "../features/cart/cartSlice";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDj_DFHHnUjaEXykFvRQjYX2HA8w737s88",
@@ -65,7 +67,6 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
 export const listenToAuthChanges = (dispatch) => {
   return onAuthStateChanged(auth, async (userAuth) => {
-    console.log("user auth", userAuth);
     if (userAuth) {
       const userRef = await createUserProfileDocument(userAuth);
       const snapShot = await getDoc(userRef);
@@ -74,7 +75,11 @@ export const listenToAuthChanges = (dispatch) => {
       const address = snapShot.data()?.shippingAddress || {};
 
       dispatch(setCartItems(cartItems));
-      dispatch(setWishItems(wishListItems));
+      dispatch(mergeCarts());
+
+      dispatch(setWishListItems(wishListItems));
+      dispatch(mergeWishlists());
+
       dispatch(updateShippingAddress(address));
     } else {
       dispatch(resetCart());
